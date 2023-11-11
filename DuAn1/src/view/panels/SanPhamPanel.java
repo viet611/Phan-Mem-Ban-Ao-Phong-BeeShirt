@@ -47,6 +47,8 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new view.component.Table();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sản phẩm");
 
