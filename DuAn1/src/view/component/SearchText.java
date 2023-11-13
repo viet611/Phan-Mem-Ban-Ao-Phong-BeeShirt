@@ -10,8 +10,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.RenderingHints;
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicBorders;
 
 /**
  *
@@ -20,11 +23,11 @@ import javax.swing.border.EmptyBorder;
 public class SearchText extends JTextField {
 
     public SearchText(){
-        setBorder(new EmptyBorder(5,5,5,5));
+        setBorder(new LineBorder(Color.BLACK, 1));
         setSelectionColor(new Color(220,204,182));
     }
     
-    private final String hint = "Search here ... ";
+    public String hint = "moi nguoi set thuoc tinh hint";
 
     @Override
     public void paint(Graphics g) {

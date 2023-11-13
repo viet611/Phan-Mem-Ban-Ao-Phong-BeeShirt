@@ -29,7 +29,7 @@ public class MenuItem extends javax.swing.JPanel {
             lblName.setText(data.getName());
         } else if (data.getType() == ModelMenu.MenuType.TITLE) {
             lblIcon.setText(data.getName());
-            lblIcon.setFont(new Font("arial", 1, 12));
+            lblIcon.setFont(new Font("san sheriff", 1, 12));
             lblName.setVisible(false);
         } else {
             lblName.setText("");
@@ -58,15 +58,18 @@ public class MenuItem extends javax.swing.JPanel {
         lblIcon = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
 
-        lblName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblName.setText("Menu Item");
+        lblIcon.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblName.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setText("Tên Ménu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(20, 20, 20)
                 .addComponent(lblIcon)
                 .addGap(18, 18, 18)
                 .addComponent(lblName)

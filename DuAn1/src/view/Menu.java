@@ -41,13 +41,13 @@ public class Menu extends javax.swing.JPanel {
 
     private void init(){
         listMenu1.addItem(new ModelMenu("banhang","BÁN HÀNG", ModelMenu.MenuType.MENU));
-        listMenu1.addItem(new ModelMenu("banhang","SẢN PHẨM", ModelMenu.MenuType.MENU));
-        listMenu1.addItem(new ModelMenu("banhang","KHÁCH HÀNG", ModelMenu.MenuType.MENU));
-        listMenu1.addItem(new ModelMenu("banhang","NHÂN VIÊN", ModelMenu.MenuType.MENU));
-        listMenu1.addItem(new ModelMenu("banhang","HÓA ĐƠN", ModelMenu.MenuType.MENU));
-        listMenu1.addItem(new ModelMenu("banhang","DOANH THU", ModelMenu.MenuType.MENU));
-        listMenu1.addItem(new ModelMenu("banhang","VOUCHER", ModelMenu.MenuType.MENU));
-        listMenu1.addItem(new ModelMenu("banhang","THOÁT", ModelMenu.MenuType.MENU));
+        listMenu1.addItem(new ModelMenu("sanpham","SẢN PHẨM", ModelMenu.MenuType.MENU));
+        listMenu1.addItem(new ModelMenu("khachhang","KHÁCH HÀNG", ModelMenu.MenuType.MENU));
+        listMenu1.addItem(new ModelMenu("nhanvien","NHÂN VIÊN", ModelMenu.MenuType.MENU));
+        listMenu1.addItem(new ModelMenu("hoadon","HÓA ĐƠN", ModelMenu.MenuType.MENU));
+        listMenu1.addItem(new ModelMenu("thongke","DOANH THU", ModelMenu.MenuType.MENU));
+        listMenu1.addItem(new ModelMenu("phieugiamgia","VOUCHER", ModelMenu.MenuType.MENU));
+        listMenu1.addItem(new ModelMenu("thoat","THOÁT", ModelMenu.MenuType.MENU));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,24 +68,25 @@ public class Menu extends javax.swing.JPanel {
         panelMoving.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon/iconresize.png"))); // NOI18N
-        jLabel1.setText("Bee Store");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon/t-shirt-32 (1).png"))); // NOI18N
+        jLabel1.setText("Bee Shirt");
 
         javax.swing.GroupLayout panelMovingLayout = new javax.swing.GroupLayout(panelMoving);
         panelMoving.setLayout(panelMovingLayout);
         panelMovingLayout.setHorizontalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+            .addGroup(panelMovingLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         panelMovingLayout.setVerticalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMovingLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,7 +121,7 @@ public class Menu extends javax.swing.JPanel {
     protected void paintChildren(Graphics graphics) {
         Graphics2D g2 = (Graphics2D) graphics;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint g = new GradientPaint(0,0,Color.decode("#22c1c3"),0,getHeight(),Color.decode("#fdbb2d"));
+        GradientPaint g = new GradientPaint(0,0,Color.decode("#ad5389"),0,getHeight(),Color.decode("#3c1053"));
         g2.setPaint(g);
         g2.fillRoundRect(0, 0,  getWidth(), getHeight(), 15, 15);
         g2.fillRect(getWidth()-20, 0, getWidth(),getHeight());
