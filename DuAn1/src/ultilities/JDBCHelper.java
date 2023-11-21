@@ -1,55 +1,72 @@
-package Ultilities;
+package ultilities;
 
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import ultilities.DBConnect;
 
 public class JDBCHelper {
 
-    public static ResultSet excuteQuery(String sql, Object... args) {
-        Connection cn = null;
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        cn = DBConnect.getConnection();
-        if (cn != null) {
-            try {
-                pstm = cn.prepareStatement(sql);
-                for (int i = 0; i < args.length; i++) {
-                    pstm.setObject(i + 1, args[i]);
-                }
-                rs = pstm.executeQuery();
-            } catch (SQLException ex) {
-                System.out.println("Lỗi Tại Câu Lệnh: " + sql);
-                System.out.println(ex);
-                ex.printStackTrace();
+    public static PreparedStatement getStatement(String sql, Object... args) {
+        PreparedStatement ps = null;
+        try {
+            Connection cn = DBConnect.getConnection();
+            if (sql.trim().startsWith("{")) {
+                ps = cn.prepareCall(sql);
+            } else {
+                ps = cn.prepareStatement(sql);
+            }   
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ps;
+    }
+
+    public static ResultSet excuteQuery(String sql, Object... args) {
+        ResultSet rs = null;        
+        try {
+            Connection cn = DBConnect.getConnection();
+            PreparedStatement ps = cn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+                    
         }
         return rs;
     }
 
     public static Integer excuteUpdate(String sql, Object... args) {
-        Connection cn = null;
-        PreparedStatement pstm = null;
-        Integer row = 0;
-        cn = DBConnect.getConnection();
-        if (cn != null) {
-            try {
-                pstm = cn.prepareStatement(sql);
-                for (int i = 0; i < args.length; i++) {
-                    pstm.setObject(i + 1, args[i]);
-                }
-                row = pstm.executeUpdate();
-            } catch (SQLException ex) {
-                System.out.println("Lỗi Tại Câu Lệnh: " + sql);
-                System.out.println(ex);
-                ex.printStackTrace();
+        Integer row = null;
+        try {
+            Connection cn = DBConnect.getConnection();
+            PreparedStatement ps = cn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
             }
+            row = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+                    
         }
         return row;
     }
-    
 
- 
+    public static Object excuteValue(String sql, Object... args) {
+        try {
+            ResultSet rs = excuteQuery(sql, args);
+            if (rs.next()) {
+                return rs.getObject(1);
+            }
+            rs.getStatement().getConnection().close();
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

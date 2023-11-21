@@ -23,7 +23,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="status" min="-2" max="-2" attributes="0"/>
+              <Component id="status" min="-2" pref="126" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -41,6 +41,7 @@
   <SubComponents>
     <Component class="view.component.TableStatus" name="status">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="tableStatus1"/>
       </Properties>
     </Component>
