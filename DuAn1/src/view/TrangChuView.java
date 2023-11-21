@@ -95,6 +95,7 @@ public class TrangChuView extends javax.swing.JFrame {
 
         newJPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
         mainPanel.setOpaque(false);
         mainPanel.setLayout(new java.awt.BorderLayout());
 
@@ -103,9 +104,9 @@ public class TrangChuView extends javax.swing.JFrame {
         newJPanel1Layout.setHorizontalGroup(
             newJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newJPanel1Layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         newJPanel1Layout.setVerticalGroup(
@@ -120,7 +121,9 @@ public class TrangChuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newJPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(newJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1360, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
