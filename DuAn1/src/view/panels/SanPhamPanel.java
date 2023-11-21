@@ -17,7 +17,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
      */
     public SanPhamPanel() {
         initComponents();
-        inputSanPham.hint = "sanPham";
+        inputSanPham.hint = "San pham";
         table.addRow(new Object[]{"1","San pham 1",500,"Adidas",StatusType.DANGHOATDONG});
         table.addRow(new Object[]{"1","San pham 1",500,"Adidas",StatusType.DANGHOATDONG});
         table.addRow(new Object[]{"1","San pham 1",500,"Adidas",StatusType.DANGHOATDONG});

@@ -4,10 +4,33 @@
  */
 package services.impl;
 
+import domainmodels.HoaDon;
+import java.util.List;
+import repositories.HoaDonRepository;
+import services.HoaDonService;
+
 /**
  *
  * @author Admin
  */
-public class HoaDonServiceImpl {
+public class HoaDonServiceImpl implements HoaDonService{
+
+    private final HoaDonRepository hoaDonRepository = new HoaDonRepository();
+    
+    @Override
+    public List<HoaDon> getAll() {
+        return hoaDonRepository.getAll();
+    }
+
+    @Override
+    public List<HoaDon> search(String key) {
+        return hoaDonRepository.search(key);
+    }
+
+    @Override
+    public Boolean update(HoaDon hd) {
+        return hoaDonRepository.update(hd);
+    }
+    
     
 }
