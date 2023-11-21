@@ -2558,11 +2558,23 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tb = (DefaultTableModel) tableDT.getModel();
+        tb.setRowCount(0);
         String textSearch = txt_Search.getText();
         if (rdo_KT.isSelected()) {
             try {
-                ktService.Search(textSearch);
-                LoadDataToRDOKichThuoc();
+                List<KichThuoc> listKT=ktService.Search(textSearch);
+                int count = 1;
+                for (KichThuoc x : listKT) {
+                    boolean trang_Thai = true;
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2571,8 +2583,18 @@ public class SanPhamPanel extends javax.swing.JPanel {
         if (rdo_MS.isSelected()) {
             try {
 
-                msService.Search(textSearch);
-                LoadDataToRDOMauSac();
+                List<MauSac> listMS = msService.Search(textSearch);
+                int count = 1;
+                for (MauSac x : listMS) {
+                    boolean trang_Thai = true;
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2580,8 +2602,18 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         if (rdo_CL.isSelected()) {
             try {
-                clService.Search(textSearch);
-                LoadDataToRDOChatLieu();
+                List<ChatLieu> listCL = clService.Search(textSearch);
+                int count = 1;
+                for (ChatLieu x : listCL) {
+                    boolean trang_Thai = true;
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2589,8 +2621,19 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         if (rdo_KD.isSelected()) {
             try {
-                kdService.Search(textSearch);
-                LoadDataToRDOKieuDang();
+                List<KieuDang> listKD = kdService.Search(textSearch);
+
+                int count = 1;
+                for (KieuDang x : listKD) {
+                    boolean trang_Thai = true;
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2598,8 +2641,18 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         if (rdo_MPH.isSelected()) {
             try {
-                mphService.Search(textSearch);
-                LoadDataToRDOMPH();
+                List<MuaPhuHop> listMPH = mphService.Search(textSearch);
+                int count = 1;
+                for (MuaPhuHop x : listMPH) {
+                    boolean trang_Thai = true;
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2607,8 +2660,20 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         if (rdo_MDSD.isSelected()) {
             try {
-                msdsService.Search(textSearch);
-                LoadDataToRDOMDSD();
+                List<MucDichSuDung> listMDSD = msdsService.Search(textSearch);
+
+                int count = 1;
+                for (MucDichSuDung x : listMDSD) {
+                    boolean trang_Thai = true;
+                    //System.out.println(trang_Thai);
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2616,8 +2681,18 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         if (rdo_HoaTiet.isSelected()) {
             try {
-                htService.Search(textSearch);
-                LoadDataToRDOHoaTiet();
+                List<HoaTiet> listHT = htService.Search(textSearch);
+                int count = 1;
+                for (HoaTiet x : listHT) {
+                    boolean trang_Thai = true;
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2625,8 +2700,18 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         if (rdo_TH.isSelected()) {
             try {
-                thService.Search(textSearch);
-                LoadDataToRDOThuongHieu();
+                List<ThuongHieu> listTH = thService.Search(textSearch);
+                int count = 1;
+                for (ThuongHieu x : listTH) {
+                    boolean trang_Thai = true;
+                    if (x.getTrang_thai() != 0) {
+                        trang_Thai = false;
+                    }
+                    tb.addRow(new Object[]{
+                        count, x.getMa(), x.getTen(), trang_Thai
+                    });
+                    count++;
+                }
                 //txt_TenSP.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
