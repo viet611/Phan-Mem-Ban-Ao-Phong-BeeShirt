@@ -156,6 +156,7 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
             });
             count++;
         }
+
         
     }
     public void LoadSPCT(int Page){

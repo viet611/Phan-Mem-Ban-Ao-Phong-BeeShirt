@@ -14,7 +14,7 @@ import services.HoaDonTimeLineService;
  *
  * @author Admin
  */
-public class HoaDonTimeLineImpl implements HoaDonTimeLineService{
+public class HoaDonTimeLineServiceImpl implements HoaDonTimeLineService{
 
     private final HoaDonTimeLineRepository hoaDonTimeLineRepository = new HoaDonTimeLineRepository();
     

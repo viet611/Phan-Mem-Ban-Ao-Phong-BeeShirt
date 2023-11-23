@@ -33,6 +33,7 @@ public class CellStatus extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         status.setText("tableStatus1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -41,7 +42,7 @@ public class CellStatus extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
