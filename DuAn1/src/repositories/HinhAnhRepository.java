@@ -24,7 +24,7 @@ public class HinhAnhRepository {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from hinh_anh";
+            sql = "select * from hinh_anh ORDER BY hinh_anh.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -56,5 +56,51 @@ public class HinhAnhRepository {
         } catch (Exception e) {
             System.out.println("Lôi truy " + sql);
         }
+    }
+    
+    public String getNameByID(int id){
+        String sql=null;
+        String name = null;
+        try {
+            Connection cn = null;
+            PreparedStatement pstm = null;
+            cn = DBConnect.getConnection();
+            sql = "select * from hinh_anh where hinh_anh.id = ? ORDER BY hinh_anh.id DESC";
+            pstm = cn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            ResultSet result = pstm.executeQuery();
+            while (result.next()) {  
+                name = result.getString(3);
+            }
+            pstm.close();
+            result.close();
+            cn.close();
+        } catch (Exception e) {
+            System.out.println("Lôi truy " + sql);
+        }
+        return name;
+    }
+    
+    public Integer getIDbyName(String name){
+        String sql=null;
+        int id_CL = 0 ;
+        try {
+            Connection cn = null;
+            PreparedStatement pstm = null;
+            cn = DBConnect.getConnection();
+            sql = "select * from hinh_anh where hinh_anh.duong_dan=? ORDER BY hinh_anh.id DESC";
+            pstm = cn.prepareStatement(sql);
+            pstm.setString(1, name);
+            ResultSet result = pstm.executeQuery();
+            while (result.next()) {  
+                id_CL = result.getInt(1);
+            }
+            pstm.close();
+            result.close();
+            cn.close();
+        } catch (Exception e) {
+            System.out.println("Lôi truy tem ms: " + sql);
+        }
+        return id_CL;
     }
 }

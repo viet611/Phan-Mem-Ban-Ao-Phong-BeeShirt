@@ -70,6 +70,21 @@ public class SanPhamCTImpl implements SanPhamCTService{
         sanPhamCTRepo.DeleteSpct(sp);
     }
 
+    @Override
+    public List<SanPhamCT> getSPCTbyIDSP(int iDSP) {
+        return sanPhamCTRepo.getSPCTbyIDSP(iDSP);
+    }
+
+    @Override
+    public Integer getCountSP(int IDSP) {
+        return sanPhamCTRepo.getCountSP(IDSP);
+    }
+
+    @Override
+    public List<SanPhamCT> getallWithMaSPCT(String MaSPCT) {
+        return sanPhamCTRepo.getallWithMaSPCT(MaSPCT);
+    }
+
     
     
 }

@@ -385,6 +385,11 @@ public class ThemSanPhamCT extends javax.swing.JDialog {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon/thoat.png"))); // NOI18N
         jButton2.setText("Huỷ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Choose File");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -397,6 +402,11 @@ public class ThemSanPhamCT extends javax.swing.JDialog {
         jLabel17.setText("Thêm Thông Tin Sản Phẩm Chi Tiết");
 
         jButton4.setText("Clear Form");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -474,7 +484,7 @@ public class ThemSanPhamCT extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
-                .addGap(34, 34, 34)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_MaSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -545,8 +555,8 @@ public class ThemSanPhamCT extends javax.swing.JDialog {
             try {
                 SanPhamCT sp = getData();
                 spctService.InsertSPCT(sp);
-                createDialogForm.LoadSPCT();
                 MsgBox.alert(this, "Thêm Thành Công!");
+                createDialogForm.LoadSPCT(1);
                 dispose();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -562,6 +572,31 @@ public class ThemSanPhamCT extends javax.swing.JDialog {
            openEditDialogForm();
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        txt_MaSPCT.setText("");
+        cbo_TenSP.setSelectedIndex(0);
+        cbo_ThuongHieu.setSelectedIndex(0);
+        cbo_MauSac.setSelectedIndex(0);
+        cbo_KichThuoc.setSelectedIndex(0);
+        cbo_ChatLieu.setSelectedIndex(0);
+        cbo_HoaTiet.setSelectedIndex(0);
+        cbo_KieuDang.setSelectedIndex(0);
+        cbo_MPH.setSelectedIndex(0);
+        cbo_MDSD.setSelectedIndex(0);
+        txt_Gia.setText("");
+        txt_SoLuong.setText("");
+        rdo_Nam.setSelected(true);
+        rdo_HDSPCT.setSelected(true);
+        tArea_moTa.setText("");
+        lblAnh.setText("");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

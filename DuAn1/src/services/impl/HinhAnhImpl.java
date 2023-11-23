@@ -24,5 +24,15 @@ public class HinhAnhImpl implements HinhAnhService{
     public void Insert(HinhAnh ha) {
         haRepo.InserHA(ha);
     }
+
+    @Override
+    public String getNameByID(int id) {
+        return haRepo.getNameByID(id);
+    }
+
+    @Override
+    public Integer getIDbyName(String name) {
+        return haRepo.getIDbyName(name);
+    }
     
 }

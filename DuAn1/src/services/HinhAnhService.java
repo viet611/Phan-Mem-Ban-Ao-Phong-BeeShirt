@@ -14,4 +14,6 @@ import java.util.List;
 public interface HinhAnhService {
     List<HinhAnh> getAll();
     void Insert(HinhAnh ha);
+    String getNameByID(int id);
+    Integer getIDbyName(String name);
 }

@@ -25,7 +25,7 @@ public class MauSacResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mau_sac where mau_sac.id = ?";
+            sql = "select * from mau_sac where mau_sac.id = ? ORDER BY mau_sac.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -48,7 +48,7 @@ public class MauSacResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mau_sac";
+            sql = "select * from mau_sac ORDER BY mau_sac.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -70,7 +70,7 @@ public class MauSacResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mau_sac where mau_sac.ten=?";
+            sql = "select * from mau_sac where mau_sac.ten=? ORDER BY mau_sac.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setString(1, name);
             ResultSet result = pstm.executeQuery();
@@ -93,7 +93,7 @@ public class MauSacResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mau_sac";
+            sql = "select * from mau_sac ORDER BY mau_sac.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -183,7 +183,7 @@ public class MauSacResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="SELECT * FROM mau_sac WHERE mau_sac.ma LIKE ? OR mau_sac.ten LIKE ?";
+        sql ="SELECT * FROM mau_sac WHERE mau_sac.ma LIKE ? OR mau_sac.ten LIKE ? ORDER BY mau_sac.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setString(1, "%" + ma + "%");
         pstm.setString(2, "%" + ma + "%");

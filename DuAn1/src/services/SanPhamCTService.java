@@ -23,4 +23,7 @@ public interface SanPhamCTService {
     void InsertSPCT(SanPhamCT sp);
     void UpdateSPCT(SanPhamCT sp);
     void DeleteSpct(SanPhamCT sp);
+    List<SanPhamCT>getSPCTbyIDSP(int IDSP);
+    Integer getCountSP(int IDSP);
+     List<SanPhamCT>getallWithMaSPCT(String MaSPCT);
 }

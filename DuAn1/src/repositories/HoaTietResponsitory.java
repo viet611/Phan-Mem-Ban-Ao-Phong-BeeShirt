@@ -25,7 +25,7 @@ public class HoaTietResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from hoa_tiet where hoa_tiet.id = ?";
+            sql = "select * from hoa_tiet where hoa_tiet.id = ? ORDER BY hoa_tiet.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -48,7 +48,7 @@ public class HoaTietResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from hoa_tiet";
+            sql = "select * from hoa_tiet ORDER BY hoa_tiet.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -70,7 +70,7 @@ public class HoaTietResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from hoa_tiet where hoa_tiet.ten =?";
+            sql = "select * from hoa_tiet where hoa_tiet.ten =? ORDER BY hoa_tiet.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setString(1, name);
             ResultSet result = pstm.executeQuery();
@@ -93,7 +93,7 @@ public class HoaTietResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from hoa_tiet";
+            sql = "select * from hoa_tiet ORDER BY hoa_tiet.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -181,7 +181,7 @@ public class HoaTietResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="SELECT * FROM hoa_tiet WHERE hoa_tiet.ma LIKE ? OR hoa_tiet.ten LIKE ?";
+        sql ="SELECT * FROM hoa_tiet WHERE hoa_tiet.ma LIKE ? OR hoa_tiet.ten LIKE ? ORDER BY hoa_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setString(1, "%" + ma + "%");
         pstm.setString(2, "%" + ma + "%");

@@ -25,6 +25,8 @@ public class HinhAnhSPCT extends javax.swing.JDialog {
     public boolean  close=false;
     public String path = null;
     private ThemSanPhamCT createDialogForm;
+    private ThemSPCT createForm;
+    private CapNhatSPCTPannel updateForm;
     private CapNhatSanPhamCT updateDialogForm;
     /**
      * Creates new form HinhAnhSPCT
@@ -63,15 +65,23 @@ public class HinhAnhSPCT extends javax.swing.JDialog {
         this.createDialogForm = createDialogForm;
     }
     
+    public void setCreateSPDialogForm(ThemSPCT createForm) {
+        this.createForm = createForm;
+    }
+    
+    public void setUpadateForm(CapNhatSPCTPannel updatForm) {
+        this.updateForm = updatForm;
+    }
+    
     public void setUpadateDialogForm(CapNhatSanPhamCT updateDialogForm) {
         this.updateDialogForm = updateDialogForm;
     }
     private void setUpdateDialogFormTxt_MaSPCTValue(String value) {
         if (updateDialogForm != null) {
             updateDialogForm.setTxt_MaSPCTValue1(value);
-            System.out.println(value);
+            //System.out.println(value);
         } else {
-            System.out.println("updateDialogForm is null. Make sure it is set before calling this method.");
+            //System.out.println("updateDialogForm is null. Make sure it is set before calling this method.");
         }
     }
     private void setCreateDialogFormTxt_MaSPCTValue(String value) {
@@ -80,7 +90,26 @@ public class HinhAnhSPCT extends javax.swing.JDialog {
             
             System.out.println(value);
         } else {
+            //System.out.println("createDialogForm is null. Make sure it is set before calling this method.");
+        }
+    }
+    
+    private void setCreateFormTxt_MaSPCTValue(String value) {
+        if (createForm != null) {
+            createForm.setSPCTValue(value);
+            
+            System.out.println(value);
+        } else {
             System.out.println("createDialogForm is null. Make sure it is set before calling this method.");
+        }
+    }
+    
+    private void setUpdateFormTxt_MaSPCTValue(String value) {
+        if (updateForm != null) {
+            updateForm.setUpdateSPCTValue(value);
+            //System.out.println(value);
+        } else {
+            System.out.println("updateDialogForm is null. Make sure it is set before calling this method.");
         }
     }
     
@@ -88,6 +117,8 @@ public class HinhAnhSPCT extends javax.swing.JDialog {
     public void dispose() {
         setCreateDialogFormTxt_MaSPCTValue(getPath());
         setUpdateDialogFormTxt_MaSPCTValue(getPath());
+        setCreateFormTxt_MaSPCTValue(getPath());
+        setUpdateFormTxt_MaSPCTValue(getPath());
         super.dispose();
     }
     

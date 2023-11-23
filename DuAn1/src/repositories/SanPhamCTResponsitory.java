@@ -24,7 +24,7 @@ public class SanPhamCTResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select * from san_pham_chi_tiet";
+        sql ="select * from san_pham_chi_tiet ORDER BY san_pham_chi_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         ResultSet result = pstm.executeQuery();
         while (result.next()) {
@@ -32,7 +32,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -51,7 +51,7 @@ public class SanPhamCTResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_kich_thuoc = ?";
+        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_kich_thuoc = ? ORDER BY san_pham_chi_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setInt(1, id_KichThuoc);
         ResultSet result = pstm.executeQuery();
@@ -67,7 +67,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -86,7 +86,7 @@ public class SanPhamCTResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_mau_sac = ?";
+        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_mau_sac = ? ORDER BY san_pham_chi_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setInt(1, id_MauSac);
         ResultSet result = pstm.executeQuery();
@@ -102,7 +102,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -121,7 +121,7 @@ public class SanPhamCTResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_kieu_dang = ?";
+        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_kieu_dang = ? ORDER BY san_pham_chi_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setInt(1, id_kieuDang);
         ResultSet result = pstm.executeQuery();
@@ -137,7 +137,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -156,7 +156,7 @@ public class SanPhamCTResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_chat_lieu = ?";
+        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_chat_lieu = ? ORDER BY san_pham_chi_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setInt(1, id_ChatLieu);
         ResultSet result = pstm.executeQuery();
@@ -172,7 +172,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -191,7 +191,7 @@ public class SanPhamCTResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_thuong_hieu = ?";
+        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_thuong_hieu = ? ORDER BY san_pham_chi_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setInt(1, id_ThuongHieu);
         ResultSet result = pstm.executeQuery();
@@ -207,7 +207,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -226,7 +226,7 @@ public class SanPhamCTResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_mua_phu_hop = ?";
+        sql ="select * from san_pham_chi_tiet where san_pham_chi_tiet.id_mua_phu_hop = ? ORDER BY san_pham_chi_tiet.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setInt(1, id_MPH);
         ResultSet result = pstm.executeQuery();
@@ -242,7 +242,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -261,9 +261,9 @@ public class SanPhamCTResponsitory {
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
             sql = "INSERT INTO san_pham_chi_tiet(id_san_pham, id_mau_sac, id_thuong_hieu, id_kich_thuoc, id_kieu_dang, id_mua_phu_hop, id_mdsd,\n"
-                    + "id_chat_lieu, id_hoa_tiet, ma, gioi_tinh, so_luong_ton, gia, mo_ta, trang_thai,tao_boi,sua_boi, da_xoa, id_hinh_anh\n"
+                    + "id_chat_lieu, id_hoa_tiet, ma, gioi_tinh, so_luong_ton, gia, mo_ta, trang_thai,tao_boi,sua_boi, da_xoa, id_hinh_anh,qr_code\n"
                     + ")\n"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, sp.getId_SanPham());
             pstm.setInt(2, sp.getId_MauSac());
@@ -284,6 +284,7 @@ public class SanPhamCTResponsitory {
             pstm.setString(17, sp.getSua_boi());
             pstm.setBoolean(18, sp.isDa_xoa());
             pstm.setInt(19, sp.getId_HinhAnh());
+            pstm.setString(20, sp.getQrCode());
             pstm.executeUpdate();
             //pstm.close();
             cn.close();
@@ -308,7 +309,7 @@ public class SanPhamCTResponsitory {
                         result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
                         result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
                         result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
-                        result.getString(20),result.getBoolean(21)
+                        result.getString(20),result.getBoolean(21),result.getString(23)
                 ));
             }
         pstm.close();
@@ -326,9 +327,7 @@ public class SanPhamCTResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "UPDATE san_pham_chi_tiet SET id_san_pham=?, id_mau_sac=?, id_thuong_hieu=?, id_kich_thuoc=?, id_kieu_dang=?, id_mua_phu_hop=?,\n" +
-            "id_mdsd=?, id_chat_lieu=?, ma=?, gioi_tinh=?, so_luong_ton=?, gia=?,trang_thai =?, tao_boi =?, sua_boi=?, da_xoa =?, id_hinh_anh=?\n" +
-            "WHERE san_pham_chi_tiet.id = ?";
+            sql = "UPDATE san_pham_chi_tiet SET id_san_pham=?, id_mau_sac=?, id_thuong_hieu=?, id_kich_thuoc=?, id_kieu_dang=?, id_mua_phu_hop=?,id_mdsd=?, id_chat_lieu=?, ma=?, gioi_tinh=?, so_luong_ton=?, gia=?,trang_thai =?, tao_boi =?, sua_boi=?, da_xoa =?, id_hinh_anh=? WHERE id = ?";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, sp.getId_SanPham());
             pstm.setInt(2, sp.getId_MauSac());
@@ -377,5 +376,82 @@ public class SanPhamCTResponsitory {
         }
     }
     
+    public List<SanPhamCT> getSPCTbyIDSP(int iDSP){
+        List<SanPhamCT> sp = new ArrayList<>();
+        String sql=null;
+        try {
+        Connection cn = null;
+        PreparedStatement pstm = null;
+        cn = DBConnect.getConnection();
+        sql ="SELECT * FROM san_pham_chi_tiet WHERE san_pham_chi_tiet.id_san_pham = ? ORDER BY id DESC;";
+        pstm = cn.prepareStatement(sql);
+        pstm.setInt(1, iDSP);
+        ResultSet result = pstm.executeQuery();
+        while (result.next()) {
+                sp.add(new SanPhamCT(result.getInt(1), result.getInt(2), result.getInt(3), 
+                        result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
+                        result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
+                        result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
+                        result.getString(20),result.getBoolean(21),result.getString(23)
+                ));
+            }
+        pstm.close();
+        result.close();
+        cn.close();
+        } catch (Exception e) {
+            System.out.println("Lôi truy " + sql);
+        }
+        return sp;
+    }
     
+    public Integer getCountSP(int IDSP){
+        String sql=null;
+        int id_SP = 0 ;
+        try {
+            Connection cn = null;
+            PreparedStatement pstm = null;
+            cn = DBConnect.getConnection();
+            sql = "select COUNT(*) from san_pham_chi_tiet where san_pham_chi_tiet.id_san_pham =?";
+            pstm = cn.prepareStatement(sql);
+            pstm.setInt(1, IDSP);
+            ResultSet result = pstm.executeQuery();
+            while (result.next()) {  
+                id_SP = result.getInt(1);
+            }
+            pstm.close();
+            result.close();
+            cn.close();
+        } catch (Exception e) {
+            System.out.println("Lôi truy tem ms: " + sql);
+        }
+        return id_SP;
+    }
+    
+    public List<SanPhamCT> getallWithMaSPCT(String MaSPCT){
+        List<SanPhamCT> sp = new ArrayList<>();
+        String sql=null;
+        try {
+        Connection cn = null;
+        PreparedStatement pstm = null;
+        cn = DBConnect.getConnection();
+        sql ="SELECT * FROM san_pham_chi_tiet WHERE san_pham_chi_tiet.ma = ? ORDER BY id DESC;";
+        pstm = cn.prepareStatement(sql);
+        pstm.setString(1, MaSPCT);
+        ResultSet result = pstm.executeQuery();
+        while (result.next()) {
+                sp.add(new SanPhamCT(result.getInt(1), result.getInt(2), result.getInt(3), 
+                        result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
+                        result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
+                        result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
+                        result.getString(20),result.getBoolean(21),result.getString(23)
+                ));
+            }
+        pstm.close();
+        result.close();
+        cn.close();
+        } catch (Exception e) {
+            System.out.println("Lôi truy " + sql);
+        }
+        return sp;
+    }
 }

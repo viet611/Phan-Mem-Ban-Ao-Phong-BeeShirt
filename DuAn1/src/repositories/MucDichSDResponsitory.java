@@ -25,7 +25,7 @@ public class MucDichSDResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from muc_dich_su_dung where muc_dich_su_dung.id = ?";
+            sql = "select * from muc_dich_su_dung where muc_dich_su_dung.id = ? ORDER BY muc_dich_su_dung.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -48,7 +48,7 @@ public class MucDichSDResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from muc_dich_su_dung";
+            sql = "select * from muc_dich_su_dung ORDER BY muc_dich_su_dung.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             //MucDichSuDung(int id, String ma, String ten, int trang_thai)
@@ -71,7 +71,7 @@ public class MucDichSDResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from muc_dich_su_dung where muc_dich_su_dung.ten=?";
+            sql = "select * from muc_dich_su_dung where muc_dich_su_dung.ten=? ORDER BY muc_dich_su_dung.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setString(1, name);
             ResultSet result = pstm.executeQuery();
@@ -94,7 +94,7 @@ public class MucDichSDResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from muc_dich_su_dung";
+            sql = "select * from muc_dich_su_dung ORDER BY muc_dich_su_dung.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -181,7 +181,7 @@ public class MucDichSDResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="SELECT * FROM mua_phu_hop WHERE mua_phu_hop.ma LIKE ? OR mua_phu_hop.ten LIKE ?";
+        sql ="SELECT * FROM mua_phu_hop WHERE mua_phu_hop.ma LIKE ? OR mua_phu_hop.ten LIKE ? ORDER BY muc_dich_su_dung.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setString(1, "%" + ma + "%");
         pstm.setString(2, "%" + ma + "%");

@@ -25,7 +25,7 @@ public class MuaPHResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mua_phu_hop where mua_phu_hop.id = ?";
+            sql = "select * from mua_phu_hop where mua_phu_hop.id = ? ORDER BY mua_phu_hop.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -48,7 +48,7 @@ public class MuaPHResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mua_phu_hop";
+            sql = "select * from mua_phu_hop ORDER BY mua_phu_hop.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -70,7 +70,7 @@ public class MuaPHResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mua_phu_hop where mua_phu_hop.ten=?";
+            sql = "select * from mua_phu_hop where mua_phu_hop.ten=? ORDER BY mua_phu_hop.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setString(1, name);
             ResultSet result = pstm.executeQuery();
@@ -92,7 +92,7 @@ public class MuaPHResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from mua_phu_hop";
+            sql = "select * from mua_phu_hop ORDER BY mua_phu_hop.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -179,7 +179,7 @@ public class MuaPHResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="SELECT * FROM mua_phu_hop WHERE mua_phu_hop.ma LIKE ? OR mua_phu_hop.ten LIKE ?";
+        sql ="SELECT * FROM mua_phu_hop WHERE mua_phu_hop.ma LIKE ? OR mua_phu_hop.ten LIKE ? ORDER BY mua_phu_hop.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setString(1, "%" + ma + "%");
         pstm.setString(2, "%" + ma + "%");

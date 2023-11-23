@@ -27,7 +27,7 @@ public class SanPhamResponsitory {
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
         //sql ="select san_pham.id ,san_pham.ma,san_pham.ten from san_pham";
-        sql ="select * from san_pham";
+        sql ="select * from san_pham ORDER BY san_pham.id DESC";
         pstm = cn.prepareStatement(sql);
         ResultSet result = pstm.executeQuery();
         while (result.next()) {
@@ -46,7 +46,7 @@ public class SanPhamResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="select san_pham.id ,san_pham.ma,san_pham.ten from san_pham where san_pham.id ='?'";
+        sql ="select san_pham.id ,san_pham.ma,san_pham.ten from san_pham where san_pham.id =? ORDER BY san_pham.id DESC";
         pstm = cn.prepareStatement(sql);
         ResultSet result = pstm.executeQuery();
         while (result.next()) {
@@ -65,7 +65,7 @@ public class SanPhamResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select san_pham.ma from san_pham where san_pham.id = ?";
+            sql = "select san_pham.ma from san_pham where san_pham.id = ? ORDER BY san_pham.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -88,7 +88,7 @@ public class SanPhamResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select san_pham.ten from san_pham where san_pham.id = ?";
+            sql = "select san_pham.ten from san_pham where san_pham.id = ? ORDER BY san_pham.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -111,7 +111,7 @@ public class SanPhamResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from san_pham ";
+            sql = "select * from san_pham ORDER BY san_pham.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -177,7 +177,7 @@ public class SanPhamResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from san_pham where san_pham.ten=?";
+            sql = "select * from san_pham where san_pham.ten=? ORDER BY san_pham.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setString(1, name);
             ResultSet result = pstm.executeQuery();
@@ -236,5 +236,29 @@ public class SanPhamResponsitory {
         }
         
     }
+    
+    public Integer getCount(int id){
+        String sql=null;
+        int id_SP = 0 ;
+        try {
+            Connection cn = null;
+            PreparedStatement pstm = null;
+            cn = DBConnect.getConnection();
+            sql = "select COUNT(*) from san_pham_chi_tiet where san_pham_chi_tiet.id_san_pham =? ORDER BY san_pham.id DESC";
+            pstm = cn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            ResultSet result = pstm.executeQuery();
+            while (result.next()) {  
+                id_SP = result.getInt(1);
+            }
+            pstm.close();
+            result.close();
+            cn.close();
+        } catch (Exception e) {
+            System.out.println("Lôi truy Count: " + sql);
+        }
+        return id_SP;
+    }
+    
     
 }

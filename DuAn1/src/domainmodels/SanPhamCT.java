@@ -29,6 +29,7 @@ public class SanPhamCT {
     private String tao_boi;
     private String sua_boi;
     private boolean da_xoa;
+    private String qrCode;
 
     public SanPhamCT() {
     }
@@ -58,6 +59,40 @@ public class SanPhamCT {
         this.tao_boi = tao_boi;
         this.sua_boi = sua_boi;
         this.da_xoa = da_xoa;
+    }
+
+    
+    
+    public SanPhamCT(int id, int id_SanPham, int id_MauSac, int id_ThuongHieu, int id_KichThuoc, int id_KieuDang, int id_MuaPhuHop, int id_MDSD, int id_ChatLieu, int id_HoaTiet, int id_HinhAnh, String ma, boolean goi_Tinh, int so_Luong, float gia, String mo_Ta, int trang_thai, String tao_boi, String sua_boi, boolean da_xoa,String qrCode) {
+        this.id = id;
+        this.id_SanPham = id_SanPham;
+        this.id_MauSac = id_MauSac;
+        this.id_ThuongHieu = id_ThuongHieu;
+        this.id_KichThuoc = id_KichThuoc;
+        this.id_KieuDang = id_KieuDang;
+        this.id_MuaPhuHop = id_MuaPhuHop;
+        this.id_MDSD = id_MDSD;
+        this.id_ChatLieu = id_ChatLieu;
+        this.id_HoaTiet = id_HoaTiet;
+        this.id_HinhAnh = id_HinhAnh;
+        this.ma = ma;
+        this.goi_Tinh = goi_Tinh;
+        this.so_Luong = so_Luong;
+        this.gia = gia;
+        this.mo_Ta = mo_Ta;
+        this.trang_thai = trang_thai;
+        this.tao_boi = tao_boi;
+        this.sua_boi = sua_boi;
+        this.da_xoa = da_xoa;
+        this.qrCode =qrCode;
+    }
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
     
     

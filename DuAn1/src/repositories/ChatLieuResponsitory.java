@@ -25,7 +25,7 @@ public class ChatLieuResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from chat_lieu where chat_lieu.id = ?";
+            sql = "select * from chat_lieu where chat_lieu.id = ? ORDER BY chat_lieu.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -48,7 +48,7 @@ public class ChatLieuResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from chat_lieu";
+            sql = "select * from chat_lieu ORDER BY chat_lieu.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -70,7 +70,7 @@ public class ChatLieuResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from chat_lieu where chat_lieu.ten=?";
+            sql = "select * from chat_lieu where chat_lieu.ten=? ORDER BY chat_lieu.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setString(1, name);
             ResultSet result = pstm.executeQuery();
@@ -93,7 +93,7 @@ public class ChatLieuResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from chat_lieu";
+            sql = "select * from chat_lieu ORDER BY chat_lieu.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -180,7 +180,7 @@ public class ChatLieuResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="SELECT * FROM chat_lieu WHERE chat_lieu.ma LIKE ? OR chat_lieu.ten LIKE ?";
+        sql ="SELECT * FROM chat_lieu WHERE chat_lieu.ma LIKE ? OR chat_lieu.ten LIKE ? ORDER BY chat_lieu.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setString(1, "%" + ma + "%");
         pstm.setString(2, "%" + ma + "%");

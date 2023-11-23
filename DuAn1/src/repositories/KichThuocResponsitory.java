@@ -25,7 +25,7 @@ public class KichThuocResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from kich_thuoc where kich_thuoc.id = ?";
+            sql = "select * from kich_thuoc where kich_thuoc.id = ? ORDER BY kich_thuoc.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setInt(1, id);
             ResultSet result = pstm.executeQuery();
@@ -48,7 +48,7 @@ public class KichThuocResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from kich_thuoc";
+            sql = "select * from kich_thuoc ORDER BY kich_thuoc.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -70,7 +70,7 @@ public class KichThuocResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from kich_thuoc where kich_thuoc.ten=?";
+            sql = "select * from kich_thuoc where kich_thuoc.ten=? ORDER BY kich_thuoc.id DESC";
             pstm = cn.prepareStatement(sql);
             pstm.setString(1, name);
             ResultSet result = pstm.executeQuery();
@@ -93,7 +93,7 @@ public class KichThuocResponsitory {
             Connection cn = null;
             PreparedStatement pstm = null;
             cn = DBConnect.getConnection();
-            sql = "select * from kich_thuoc";
+            sql = "select * from kich_thuoc ORDER BY kich_thuoc.id DESC";
             pstm = cn.prepareStatement(sql);
             ResultSet result = pstm.executeQuery();
             while (result.next()) {  
@@ -181,7 +181,7 @@ public class KichThuocResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="SELECT * FROM kich_thuoc WHERE kich_thuoc.ma LIKE ? OR kich_thuoc.ten LIKE ?";
+        sql ="SELECT * FROM kich_thuoc WHERE kich_thuoc.ma LIKE ? OR kich_thuoc.ten LIKE ? ORDER BY kich_thuoc.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setString(1, "%" + ma + "%");
         pstm.setString(2, "%" + ma + "%");
