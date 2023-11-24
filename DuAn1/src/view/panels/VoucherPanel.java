@@ -1,5 +1,6 @@
 package view.panels;
 
+import com.raven.datechooser.DateChooser;
 import services.impl.KhuyenMaiServiceIMPL;
 import domainmodels.KhuyenMai;
 import java.time.LocalDate;
@@ -14,6 +15,10 @@ public class VoucherPanel extends javax.swing.JPanel {
     DefaultTableModel dtm = new DefaultTableModel();
     public VoucherPanel() {
         initComponents();
+        DateChooser dateChooser = new DateChooser();
+        dateChooser.setTextField(txtNgayBatDau);
+        dateChooser.setTextField(txtNgayKetThuc);
+        dateChooser.setDateSelectionMode(DateChooser.DateSelectionMode.SINGLE_DATE_SELECTED);
         service.upDateTrangThai();
         txtNgayBatDau.setText("");
         txtNgayKetThuc.setText("");
@@ -53,8 +58,6 @@ public class VoucherPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ngayBatDau = new com.raven.datechooser.DateChooser();
-        ngayKetThuc = new com.raven.datechooser.DateChooser();
         panelFormPhieuGiamGia = new view.PanelBorder();
         txtTen = new com.raven.suportSwing.TextField();
         txtGiaGiam = new com.raven.suportSwing.TextField();
@@ -79,12 +82,6 @@ public class VoucherPanel extends javax.swing.JPanel {
         cbbLocTrangThai = new com.raven.suportSwing.Combobox();
         btnLoc = new com.raven.suportSwing.MyButton();
         lblTieuDe = new javax.swing.JLabel();
-
-        ngayBatDau.setForeground(new java.awt.Color(153, 0, 204));
-        ngayBatDau.setTextRefernce(txtNgayBatDau);
-
-        ngayKetThuc.setForeground(new java.awt.Color(153, 0, 204));
-        ngayKetThuc.setTextRefernce(txtNgayKetThuc);
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -487,8 +484,6 @@ public class VoucherPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblNgayKetThuc;
     private javax.swing.JLabel lblTieuDe;
     private javax.swing.JLabel lblTimKiem;
-    private com.raven.datechooser.DateChooser ngayBatDau;
-    private com.raven.datechooser.DateChooser ngayKetThuc;
     private view.PanelBorder panelDanhSachPhieuGiamGia;
     private view.PanelBorder panelFormPhieuGiamGia;
     private view.component.Table tblPhieuGiamGia;
