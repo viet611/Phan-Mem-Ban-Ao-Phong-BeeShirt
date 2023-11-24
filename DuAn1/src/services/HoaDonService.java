@@ -4,10 +4,15 @@
  */
 package services;
 
+import domainmodels.HoaDon;
+import java.util.List;
+
 /**
  *
  * @author Admin
  */
-public class HoaDonService {
-    
+public interface HoaDonService {
+    List<HoaDon> getAll();
+    List<HoaDon> search(String key);
+    Boolean update(HoaDon hd);
 }

@@ -4,7 +4,7 @@
  */
 package repositories;
 
-import Ultilities.JDBCHelper;
+import ultilities.JDBCHelper;
 import domainmodels.HoaDon;
 import domainmodels.HoaDonTimeLine;
 import java.sql.ResultSet;
@@ -16,6 +16,11 @@ import java.util.List;
  * @author Admin
  */
 public class HoaDonTimeLineRepository {
+
+    public static void main(String[] args) {
+        HoaDonTimeLineRepository abc = new HoaDonTimeLineRepository();
+        abc.selectByIDHoaDon(1).forEach(n -> System.out.println(n));
+    }
 
     public List<HoaDonTimeLine> getAll() {
         List<HoaDonTimeLine> list = new ArrayList<>();
@@ -38,18 +43,13 @@ public class HoaDonTimeLineRepository {
     public Boolean insert(HoaDonTimeLine hdtl) {
         try {
             String sql = "INSERT INTO hoa_don_timeline values(?,?,?,?,?,?,?)";
-            JDBCHelper.excuteUpdate(sql, hdtl.getHoaDon(), hdtl.getTrangThai(), hdtl.getNgayTao(), hdtl.getNgaySua(), hdtl.getTaoBoi(), hdtl.getDaXoa());
+            JDBCHelper.excuteUpdate(sql, hdtl.getHoaDon().getId(), hdtl.getTrangThai(), hdtl.getNgayTao(), hdtl.getNgaySua(), hdtl.getTaoBoi(),hdtl.getSuaBoi(), hdtl.getDaXoa());
         } catch (Exception e) {
             System.out.println("Loi truy van");
             e.printStackTrace();
             return false;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        HoaDonTimeLineRepository abc = new HoaDonTimeLineRepository();
-        abc.selectByIDHoaDon(1).forEach(n -> System.out.println(n));
     }
 
     public List<HoaDonTimeLine> selectByIDHoaDon(Integer idHoaDon) {
@@ -75,4 +75,6 @@ public class HoaDonTimeLineRepository {
         }
         return list;
     }
+    
+    
 }

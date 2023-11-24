@@ -9,6 +9,6 @@ package view.model;
  * @author Admin
  */
 public enum StatusType {
-    DANGHOATDONG,KHONGHOATDONG
+    DANGHOATDONG,KHONGHOATDONG,DATHANHTOAN,CHUATHANHTOAN
     
 }
