@@ -53,8 +53,8 @@ public class ThemSPCT extends javax.swing.JPanel {
     HinhAnhImpl haService = new HinhAnhImpl();
     SanPhamCTImpl spctService = new SanPhamCTImpl();
     
-    //String path = "C:\\Users\\Admin\\Desktop\\DAN1\\DuAn1\\src\\view\\icon\\";
-    String path = "..\\..\\..\\..\\DAN1\\DuAn1\\src\\view\\icon";
+
+    String path = "C:\\Users\\Admin\\Desktop\\";
    private String PathTest =null;
     
     private SanPhamPanel createDialogForm;

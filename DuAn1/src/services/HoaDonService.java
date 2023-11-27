@@ -15,4 +15,6 @@ public interface HoaDonService {
     List<HoaDon> getAll();
     List<HoaDon> search(String key);
     Boolean update(HoaDon hd);
+    Boolean insert(HoaDon hd);
+    Boolean updateFull(HoaDon hd);
 }

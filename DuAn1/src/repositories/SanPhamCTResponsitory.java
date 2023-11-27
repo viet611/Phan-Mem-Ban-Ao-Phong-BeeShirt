@@ -289,6 +289,7 @@ public class SanPhamCTResponsitory {
             //pstm.close();
             cn.close();
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Lôi truy " + sql);
         }
     }

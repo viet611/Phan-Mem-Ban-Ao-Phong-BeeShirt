@@ -13,7 +13,7 @@ import java.util.Date;
 public class HoaDon {
     private Integer id;
     private KhachHang khachHang;
-    private Voucher voucher;
+    private KhuyenMai voucher;
     private NhanVien nhanVien;
     private String ma;
     private Double soTienGiam;
@@ -29,10 +29,15 @@ public class HoaDon {
     private String suaBoi;
     private Boolean daXoa;
 
+    @Override
+    public String toString() {
+        return "HoaDon{" + "id=" + id + ", khachHang=" + khachHang + ", voucher=" + voucher + ", nhanVien=" + nhanVien + ", ma=" + ma + ", soTienGiam=" + soTienGiam + ", tongTien=" + tongTien + ", tienShip=" + tienShip + ", tenKhachHang=" + tenKhachHang + ", sdt=" + sdt + ", diaChi=" + diaChi + ", trangThai=" + trangThai + ", ngayTao=" + ngayTao + ", ngaySua=" + ngaySua + ", taoBoi=" + taoBoi + ", suaBoi=" + suaBoi + ", daXoa=" + daXoa + '}';
+    }
+
     public HoaDon() {
     }
 
-    public HoaDon(Integer id, KhachHang khachHang, Voucher voucher, NhanVien nhanVien, String ma, Double soTienGiam, Double tongTien, Double tienShip, String tenKhachHang, String sdt, String diaChi, Integer trangThai, Date ngayTao, Date ngaySua, String taoBoi, String suaBoi, Boolean daXoa) {
+    public HoaDon(Integer id, KhachHang khachHang, KhuyenMai voucher, NhanVien nhanVien, String ma, Double soTienGiam, Double tongTien, Double tienShip, String tenKhachHang, String sdt, String diaChi, Integer trangThai, Date ngayTao, Date ngaySua, String taoBoi, String suaBoi, Boolean daXoa) {
         this.id = id;
         this.khachHang = khachHang;
         this.voucher = voucher;
@@ -68,11 +73,11 @@ public class HoaDon {
         this.khachHang = khachHang;
     }
 
-    public Voucher getVoucher() {
+    public KhuyenMai getVoucher() {
         return voucher;
     }
 
-    public void setVoucher(Voucher voucher) {
+    public void setVoucher(KhuyenMai voucher) {
         this.voucher = voucher;
     }
 

@@ -65,7 +65,23 @@ public class NhanVienRepository {
             e.printStackTrace();
         }
         return null;
-
+    }
+    
+    public NhanVien getById(Integer id) {
+        NhanVien nv = null;
+        try ( Connection conn = new DBConnect().getConnection()) {
+            String query = "SELECT  * from nhan_vien WHERE id = ?";
+            ResultSet rs = JDBCHelper.excuteQuery(query, id);
+            while (rs.next()) {
+                nv = new NhanVien(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBoolean(5),
+                        rs.getDate(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10),
+                        rs.getDate(11), rs.getDate(12), rs.getString(13), rs.getString(14), rs.getBoolean(15), rs.getString(16), rs.getString(17));
+            }
+            return nv;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public boolean addNV(NhanVien nv) {
