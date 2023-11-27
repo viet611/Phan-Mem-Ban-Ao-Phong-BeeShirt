@@ -16,8 +16,9 @@ public class VoucherPanel extends javax.swing.JPanel {
     public VoucherPanel() {
         initComponents();
         DateChooser dateChooser = new DateChooser();
+        DateChooser dateChooser1 = new DateChooser();
         dateChooser.setTextField(txtNgayBatDau);
-        dateChooser.setTextField(txtNgayKetThuc);
+        dateChooser1.setTextField(txtNgayKetThuc);
         dateChooser.setDateSelectionMode(DateChooser.DateSelectionMode.SINGLE_DATE_SELECTED);
         service.upDateTrangThai();
         txtNgayBatDau.setText("");
@@ -360,11 +361,11 @@ public class VoucherPanel extends javax.swing.JPanel {
         String ma = txtMa.getText().trim();
         String ten = txtTen.getText().trim();
         String ngayBD = txtNgayBatDau.getText();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate1 = LocalDate.parse(ngayBD, formatter1);
         java.sql.Date ngayBDs = java.sql.Date.valueOf(localDate1);
         String ngayKT = txtNgayKetThuc.getText();
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate2 = LocalDate.parse(ngayKT, formatter2);
         java.sql.Date ngayKTs = java.sql.Date.valueOf(localDate2);
         double soTienGiam = Double.parseDouble(txtGiaGiam.getText());

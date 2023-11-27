@@ -31,6 +31,16 @@ public class HoaDonServiceImpl implements HoaDonService{
     public Boolean update(HoaDon hd) {
         return hoaDonRepository.update(hd);
     }
+
+    @Override
+    public Boolean insert(HoaDon hd) {
+        return hoaDonRepository.insert(hd);
+    }
+
+    @Override
+    public Boolean updateFull(HoaDon hd) {
+        return  hoaDonRepository.updateFull(hd);
+    }
     
     
 }

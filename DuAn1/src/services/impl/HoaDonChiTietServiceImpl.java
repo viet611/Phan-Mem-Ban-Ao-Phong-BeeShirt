@@ -21,5 +21,20 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService{
     public List<HoaDonChiTiet> getAllByIdHoaDon(Integer idHoaDon) {
         return hoaDonChiTietRepository.getAllByIdHoaDon(idHoaDon);
     }
+
+    @Override
+    public Boolean insert(HoaDonChiTiet hdct) {
+        return hoaDonChiTietRepository.add(hdct);
+    }
+
+    @Override
+    public Boolean update(HoaDonChiTiet hdct) {
+        return  hoaDonChiTietRepository.update(hdct);
+    }
+
+    @Override
+    public Boolean delete(Integer id) {
+        return hoaDonChiTietRepository.delete(id);
+    }
     
 }

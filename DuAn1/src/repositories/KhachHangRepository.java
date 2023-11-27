@@ -311,7 +311,7 @@ public class KhachHangRepository {
                 kh.setNgaySinh(rs.getDate("ngay_sinh"));
                 kh.setSdt(rs.getString("sdt"));
                 kh.setDiaChi(rs.getString("dia_chi"));
-                kh.setStatus(rs.getInt("trang_thai)"));
+                kh.setStatus(rs.getInt("trang_thai"));
                 kh.setNgayTao(rs.getDate("ngay_tao"));
                 kh.setNgaySua(rs.getDate("ngay_sua"));
                 kh.setNguoiTao(rs.getString("tao_boi"));
