@@ -660,7 +660,7 @@ public class ThemDacTrungSPCT extends javax.swing.JDialog {
             }
             if(rdo_MPH.isSelected()){
                 try {
-                    MucDichSuDung sp = new MucDichSuDung();
+                    MuaPhuHop sp = new MuaPhuHop();
                     String prefix = "MPH";
                     Random random = new Random();
                     int randomNumber = random.nextInt(100) + 1; // Generate a random number between 1 and 100
@@ -678,7 +678,7 @@ public class ThemDacTrungSPCT extends javax.swing.JDialog {
 
                     int trangThai = 0;
                     sp.setTrang_thai(trangThai);
-                    msdsService.InsertMDSD(sp);
+                    mphService.InsertMPH(sp);
                     MsgBox.alert(this, "Thêm Thành Công!");
                     LoadDataMPH();
                     txt_Ten.setText("");

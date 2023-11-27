@@ -6,6 +6,12 @@ package repositories;
 
 import ultilities.JDBCHelper;
 import domainmodels.HoaDonChiTiet;
+
+import domainmodels.KhachHang;
+import domainmodels.NhanVien;
+//import domainmodels.SanPhamChiTiet;
+import domainmodels.Voucher;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;

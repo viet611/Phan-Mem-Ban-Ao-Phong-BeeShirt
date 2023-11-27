@@ -42,6 +42,15 @@ public class HoaDonChiTiet {
         this.daXoa = daXoa;
     }
 
+    public HoaDonChiTiet(SanPhamCT sanPhamChiTiet, Integer soLuong) {
+        this.sanPhamChiTiet = sanPhamChiTiet;
+        this.soLuong = soLuong;
+    }
+    
+    
+
+   
+
     public Integer getId() {
         return id;
     }
@@ -65,6 +74,8 @@ public class HoaDonChiTiet {
     public void setSanPhamChiTiet(SanPhamCT sanPhamChiTiet) {
         this.sanPhamChiTiet = sanPhamChiTiet;
     }
+
+    
 
     public Integer getSoLuong() {
         return soLuong;

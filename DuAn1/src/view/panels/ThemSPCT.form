@@ -478,7 +478,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton6"/>
+        <Property name="text" type="java.lang.String" value="Th&#xea;m &#x110;&#x1eb7;c Tr&#x1b0;ng S&#x1ea3;n Ph&#x1ea9;m"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
