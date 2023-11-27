@@ -10,31 +10,29 @@ import java.util.Date;
  *
  * @author Admin
  */
-public class HoaDonChiTiet {
-    private Integer id;
+public class PTTTChiTiet {
+    private int id;
     private HoaDon hoaDon;
-    private SanPhamCT sanPhamChiTiet;
-    private Integer soLuong;
-    private double thanhTien;
-    private double giaTien;
-    private Integer trangThai;
+    private PhuongThucThanhToan phuongThucThanhToan;
+    private double soTien;
+    private int  trangThai;
+    private String maGD;
     private Date ngayTao;
     private Date ngaySua;
     private String taoBoi;
     private String suaBoi;
     private Boolean daXoa;
 
-    public HoaDonChiTiet() {
+    public PTTTChiTiet() {
     }
 
-    public HoaDonChiTiet(Integer id, HoaDon hoaDon, SanPhamCT sanPhamChiTiet, Integer soLuong, double thanhTien, double giaTien, Integer trangThai, Date ngayTao, Date ngaySua, String taoBoi, String suaBoi, Boolean daXoa) {
+    public PTTTChiTiet(int id, HoaDon hoaDon, PhuongThucThanhToan phuongThucThanhToan, double soTien, int trangThai, String maGD, Date ngayTao, Date ngaySua, String taoBoi, String suaBoi, Boolean daXoa) {
         this.id = id;
         this.hoaDon = hoaDon;
-        this.sanPhamChiTiet = sanPhamChiTiet;
-        this.soLuong = soLuong;
-        this.thanhTien = thanhTien;
-        this.giaTien = giaTien;
+        this.phuongThucThanhToan = phuongThucThanhToan;
+        this.soTien = soTien;
         this.trangThai = trangThai;
+        this.maGD = maGD;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.taoBoi = taoBoi;
@@ -42,11 +40,11 @@ public class HoaDonChiTiet {
         this.daXoa = daXoa;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -58,44 +56,36 @@ public class HoaDonChiTiet {
         this.hoaDon = hoaDon;
     }
 
-    public SanPhamCT getSanPhamChiTiet() {
-        return sanPhamChiTiet;
+    public PhuongThucThanhToan getPhuongThucThanhToan() {
+        return phuongThucThanhToan;
     }
 
-    public void setSanPhamChiTiet(SanPhamCT sanPhamChiTiet) {
-        this.sanPhamChiTiet = sanPhamChiTiet;
+    public void setPhuongThucThanhToan(PhuongThucThanhToan phuongThucThanhToan) {
+        this.phuongThucThanhToan = phuongThucThanhToan;
     }
 
-    public Integer getSoLuong() {
-        return soLuong;
+    public double getSoTien() {
+        return soTien;
     }
 
-    public void setSoLuong(Integer soLuong) {
-        this.soLuong = soLuong;
+    public void setSoTien(double soTien) {
+        this.soTien = soTien;
     }
 
-    public double getThanhTien() {
-        return thanhTien;
-    }
-
-    public void setThanhTien(double thanhTien) {
-        this.thanhTien = thanhTien;
-    }
-
-    public double getGiaTien() {
-        return giaTien;
-    }
-
-    public void setGiaTien(double giaTien) {
-        this.giaTien = giaTien;
-    }
-
-    public Integer getTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(Integer trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public String getMaGD() {
+        return maGD;
+    }
+
+    public void setMaGD(String maGD) {
+        this.maGD = maGD;
     }
 
     public Date getNgayTao() {

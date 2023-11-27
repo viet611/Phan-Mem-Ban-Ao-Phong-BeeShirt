@@ -13,4 +13,7 @@ import java.util.List;
  */
 public interface HoaDonChiTietService {
     List<HoaDonChiTiet> getAllByIdHoaDon(Integer idHoaDon);
+    Boolean insert(HoaDonChiTiet hdct);
+    Boolean update(HoaDonChiTiet hdct);
+    Boolean delete(Integer id);
 }
