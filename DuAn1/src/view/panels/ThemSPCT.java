@@ -16,6 +16,8 @@ import domainmodels.SanPhamCT;
 import domainmodels.ThuongHieu;
 import java.awt.Image;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -51,7 +53,8 @@ public class ThemSPCT extends javax.swing.JPanel {
     HinhAnhImpl haService = new HinhAnhImpl();
     SanPhamCTImpl spctService = new SanPhamCTImpl();
     
-    String path = "C:\\Users\\Admin\\Desktop\\DAN1\\DuAn1\\src\\view\\icon\\";
+    //String path = "C:\\Users\\Admin\\Desktop\\DAN1\\DuAn1\\src\\view\\icon\\";
+    String path = "..\\..\\..\\..\\DAN1\\DuAn1\\src\\view\\icon";
    private String PathTest =null;
     
     private SanPhamPanel createDialogForm;
@@ -229,8 +232,12 @@ public class ThemSPCT extends javax.swing.JPanel {
         spct.setId_HinhAnh(id_hinhAnh);
         
         
-        String fullPath = path + maSPCT+ ".png";
-        //System.out.println("FullPath: "+fullPath);
+        
+        String relativePath = "src\\view\\icon";
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        Path fullPath1 = Paths.get(currentWorkingDirectory, relativePath);
+        String fullPath = fullPath1.toString() +"\\" +maSPCT+ ".png";
+        System.out.println("FullPath: "+fullPath);
         byte[] resultQRCode = ZXingHelper.getQRCodeImage(maSPCT, lblAnhADD.getWidth(), lblAnhADD.getHeight());
         if (resultQRCode != null) {
             saveQRCodeImage(resultQRCode, fullPath);
@@ -239,7 +246,7 @@ public class ThemSPCT extends javax.swing.JPanel {
             System.out.println("Failed to generate QR Code.");
         }
         spct.setQrCode(fullPath);
-        //lblAnhADD.setIcon(ResizeImage(fullPath));
+//        lblAnhADD.setIcon(ResizeImage(fullPath));
         
         return spct;
     }
@@ -389,7 +396,7 @@ public class ThemSPCT extends javax.swing.JPanel {
             .addGap(0, 127, Short.MAX_VALUE)
         );
 
-        jButton6.setText("jButton6");
+        jButton6.setText("Thêm Đặc Trưng Sản Phẩm");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -574,6 +581,8 @@ public class ThemSPCT extends javax.swing.JPanel {
         // TODO add your handling code here:
         //dispose();
         this.setVisible(false);
+        createDialogForm.LoadCBOFilter();
+        createDialogForm.LoadSPCT(1);
         createDialogForm.addTabPannel();
         
     }//GEN-LAST:event_jButton2ActionPerformed

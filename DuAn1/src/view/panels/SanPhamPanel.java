@@ -540,7 +540,7 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
         txt_TENSP.setText("");
         id=0;
     }
-    private void LoadCBOFilter(){
+    public void LoadCBOFilter(){
         List<ThuongHieu> thuongHieu = thService.getName();
         List<MauSac> mauSac = msService.getName();
         List<KichThuoc> kichThuoc = ktService.getName();
@@ -554,6 +554,7 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
         cbo_FilterSPCTCL.setModel(new DefaultComboBoxModel(chatLieu.toArray()));
         cbo_FilterSPCTKD.setModel(new DefaultComboBoxModel(kieuDang.toArray()));
         cbo_FilterSPCTMPH.setModel(new DefaultComboBoxModel(muaPhuHop.toArray()));
+        System.out.println(muaPhuHop.toArray());
     }
     
     private void LoadDataToRDOKichThuoc(){
@@ -813,6 +814,7 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
         btn_CapNhatSPCT = new javax.swing.JButton();
         btn_XoaSPCT = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -1095,10 +1097,17 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Quét QR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Tắt QR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -1115,6 +1124,8 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
                 .addComponent(btn_XoaSPCT, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
+                .addGap(23, 23, 23)
+                .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -1125,7 +1136,8 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
                     .addComponent(btn_ThemSPCT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_CapNhatSPCT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_XoaSPCT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -3023,6 +3035,13 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
             innitCam();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if (webCam.isOpen()) {
+            webCam.close();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_CapNhatDT;
@@ -3047,6 +3066,7 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

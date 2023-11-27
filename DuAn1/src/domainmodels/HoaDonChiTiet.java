@@ -13,7 +13,7 @@ import java.util.Date;
 public class HoaDonChiTiet {
     private Integer id;
     private HoaDon hoaDon;
-    private SanPhamChiTiet sanPhamChiTiet;
+    private SanPhamCT sanPhamChiTiet;
     private Integer soLuong;
     private double thanhTien;
     private double giaTien;
@@ -27,7 +27,7 @@ public class HoaDonChiTiet {
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(Integer id, HoaDon hoaDon, SanPhamChiTiet sanPhamChiTiet, Integer soLuong, double thanhTien, double giaTien, Integer trangThai, Date ngayTao, Date ngaySua, String taoBoi, String suaBoi, Boolean daXoa) {
+    public HoaDonChiTiet(Integer id, HoaDon hoaDon, SanPhamCT sanPhamChiTiet, Integer soLuong, double thanhTien, double giaTien, Integer trangThai, Date ngayTao, Date ngaySua, String taoBoi, String suaBoi, Boolean daXoa) {
         this.id = id;
         this.hoaDon = hoaDon;
         this.sanPhamChiTiet = sanPhamChiTiet;
@@ -41,6 +41,15 @@ public class HoaDonChiTiet {
         this.suaBoi = suaBoi;
         this.daXoa = daXoa;
     }
+
+    public HoaDonChiTiet(SanPhamCT sanPhamChiTiet, Integer soLuong) {
+        this.sanPhamChiTiet = sanPhamChiTiet;
+        this.soLuong = soLuong;
+    }
+    
+    
+
+   
 
     public Integer getId() {
         return id;
@@ -58,13 +67,15 @@ public class HoaDonChiTiet {
         this.hoaDon = hoaDon;
     }
 
-    public SanPhamChiTiet getSanPhamChiTiet() {
+    public SanPhamCT getSanPhamChiTiet() {
         return sanPhamChiTiet;
     }
 
-    public void setSanPhamChiTiet(SanPhamChiTiet sanPhamChiTiet) {
+    public void setSanPhamChiTiet(SanPhamCT sanPhamChiTiet) {
         this.sanPhamChiTiet = sanPhamChiTiet;
     }
+
+    
 
     public Integer getSoLuong() {
         return soLuong;

@@ -107,7 +107,7 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
         showdataTable(listNV);
         addCbb();
         id.setVisible(false);
-        initWebcam();
+        //initWebcam();
         
     }
 
