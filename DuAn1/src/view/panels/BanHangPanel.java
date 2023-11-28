@@ -761,6 +761,7 @@ System.out.println(hd.toString());
         hd.setSuaBoi(nhanVien.getMa());
         hd.setTenKhachHang(txtHoTen.getText());
         hd.setVoucher(khuyenMai);
+        System.out.println(khuyenMai.getId());
         if(cbGiaoHang.isSelected()){
             hd.setTienShip(15000.0);
             hd.setTrangThai(2);

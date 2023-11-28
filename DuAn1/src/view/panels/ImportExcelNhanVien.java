@@ -199,7 +199,7 @@ public class ImportExcelNhanVien extends javax.swing.JFrame {
         FileInputStream excelFIS = null;
         BufferedInputStream excelBIS = null;
         XSSFWorkbook excelImportWorkBook = null;
-        String currentDirectoryPath = "C:\\Users\\Administrator\\Desktop";
+        String currentDirectoryPath = "C:\\Users\\Admin\\Desktop\\ExcelPM";
         JFileChooser ejfc = new JFileChooser(currentDirectoryPath);
         FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Excel file", "xls", "xlsx", "xslm");
         ejfc.setFileFilter(extensionFilter);
@@ -228,7 +228,7 @@ public class ImportExcelNhanVien extends javax.swing.JFrame {
                         }
 
                     }
-                    if (row.getRowNum() != 0) {
+                    if (row.getRowNum() != -1) {
                         // Thêm rowData vào table model
                         dtm.addRow(rowData);
                     }

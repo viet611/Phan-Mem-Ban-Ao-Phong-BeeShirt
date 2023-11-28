@@ -22,6 +22,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.poi.ss.usermodel.Cell;
@@ -87,7 +88,7 @@ public class KhachHangPanel extends javax.swing.JPanel {
                 km.getMa(),
                 km.getTen(),
                 km.isSex() ? "Nam" : "Nữ",
-                km.getNgaySinh(),
+                new SimpleDateFormat("dd-MM-yyyy").format(km.getNgaySinh()),
                 km.getSdt(),
                 km.getDiaChi()
             });
@@ -99,12 +100,12 @@ public class KhachHangPanel extends javax.swing.JPanel {
     /* private void loadSoTrang() {
         jLabel1.setText(index + 1 + "");
     }*/
-    private void fillToTableLSDD(List<Object> list) {
-        dtm1.setRowCount(0);
-        for (int i = 0; i < list.size(); i++) {
-            dtm.addRow((Object[]) list.get(i));
-        }
-    }
+//    private void fillToTableLSDD(List<Object> list) {
+//        dtm1.setRowCount(0);
+//        for (int i = 0; i < list.size(); i++) {
+//            dtm.addRow((Object[]) list.get(i));
+//        }
+//    }
 
     public void clearFrom() {
         lblMa.setText("");
@@ -131,10 +132,11 @@ public class KhachHangPanel extends javax.swing.JPanel {
         } else if (txtPhoneNumber.getText().isBlank()) {
             MsgBox.warring(this, "SĐT ko được để trống!");
             return false;
-        } else if (!txtNgayThang.getText().matches("^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$")) {
-            MsgBox.warring(this, "Sai định dạng ngày (Năm-Tháng-Ngày)!");
-            return false;
         }
+//        } else if (!txtNgayThang.getText().matches("^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$")) {
+//            MsgBox.warring(this, "Sai định dạng ngày (Năm-Tháng-Ngày)!");
+//            return false;
+//        }
         return true;
     }
 
@@ -767,7 +769,7 @@ public class KhachHangPanel extends javax.swing.JPanel {
         }*/
         String maKH = lblMa.getText().trim();
         listLSGD = khRepo.listLSGDByMaKH(maKH);
-        fillToTableLSDD(listLSGD);
+//        fillToTableLSDD(listLSGD);
     }//GEN-LAST:event_tbQuanLyKhachHangMouseClicked
 
     private void rdNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNamActionPerformed
@@ -804,7 +806,7 @@ public class KhachHangPanel extends javax.swing.JPanel {
                 String ID = id.getText();
 
                 String ngayThang = txtNgayThang.getText();
-                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate localDate1 = LocalDate.parse(ngayThang, formatter1);
                 java.sql.Date ngayThangs = java.sql.Date.valueOf(localDate1);
 
@@ -852,7 +854,7 @@ public class KhachHangPanel extends javax.swing.JPanel {
             String diaChi = txtAddress.getText();
 
             String ngayThang = txtNgayThang.getText();
-            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate localDate1 = LocalDate.parse(ngayThang, formatter1);
             java.sql.Date ngayThangs = java.sql.Date.valueOf(localDate1);
 
@@ -970,7 +972,7 @@ public class KhachHangPanel extends javax.swing.JPanel {
 
         }
 
-        String desktop = "C:\\Users\\Administrator\\Desktop";
+        String desktop = "C:\\Users\\Admin\\Desktop\\ExcelPM";
         JFileChooser fileChooser = new JFileChooser(desktop);
         fileChooser.setDialogTitle("Save Excel File");
 

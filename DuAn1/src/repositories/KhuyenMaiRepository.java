@@ -17,7 +17,7 @@ public class KhuyenMaiRepository {
     String sql = null;
 
     public List<KhuyenMai> getAll() {
-        sql = "SELECT ma, ten, ngay_bat_dau, ngay_ket_thuc, so_tien_giam, so_tien_toi_thieu, trang_thai FROM voucher";
+        sql = "SELECT ma, ten, ngay_bat_dau, ngay_ket_thuc, so_tien_giam, so_tien_toi_thieu, trang_thai, id FROM voucher";
         List<KhuyenMai> listVC = new ArrayList();
 
         try {
@@ -26,6 +26,7 @@ public class KhuyenMaiRepository {
             rs = ps.executeQuery();
             while (rs.next()) {
                 KhuyenMai vc = new KhuyenMai(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getDate(4), rs.getDouble(5), rs.getDouble(6), rs.getInt(7));
+                vc.setId(rs.getInt(8));
                 listVC.add(vc);
             }
             return listVC;

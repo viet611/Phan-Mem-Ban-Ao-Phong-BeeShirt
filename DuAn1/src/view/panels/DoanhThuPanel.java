@@ -87,7 +87,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         System.out.println("dateString "+dateString);
         int tong =0;
         try {
-            List<HoaDon> hdct = tkService.getALLHDCT1(TestDate);
+            List<HoaDon> hdct = tkService.getALLHDCT1(dateString);
             for (HoaDon x : hdct) {
                 tong+=x.getTongTien();
             }
@@ -149,7 +149,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
             if (x.getSanPhamChiTiet().getId() == checkID) {
 
             } else {
-                String TenSP = spService.getNameID(x.getSanPhamChiTiet().getId());
+                String TenSP = spService.getNameID(x.getSanPhamChiTiet().getId_SanPham());
                 int sumSoLuong = x.getSoLuong();
                 //System.out.println("Test Số lượng with IDSP: " + sumSoLuong);
                 tb.addRow(new Object[]{

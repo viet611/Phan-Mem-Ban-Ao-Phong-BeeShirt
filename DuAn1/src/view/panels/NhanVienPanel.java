@@ -38,6 +38,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import java.util.Properties;
 import java.util.Random;
@@ -162,7 +163,7 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
                 km.getMa(),
                 km.getTen(),
                 km.isSex() ? "Nam" : "Nữ",
-                km.getNgaySinh(),
+                new SimpleDateFormat("dd-MM-yyyy").format(km.getNgaySinh()),
                 km.getSdt(),
                 km.getDiaChi(),
                 km.getEmail(),
@@ -188,9 +189,6 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
             return false;
         } else if (txtNgaySinhNV.getText().isBlank()) {
             MsgBox.warring(this, "Ngày sinh nhân viên không được để trống!");
-            return false;
-        } else if (!txtNgaySinhNV.getText().matches("^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$")) {
-            MsgBox.warring(this, "Sai định dạng ngày (Năm-Tháng-Ngày)!");
             return false;
         } else if (txtEmail.getText().isBlank()) {
             MsgBox.warring(this, "Mail nhân viên không được để trống!");
@@ -508,6 +506,11 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel16.setText("Quét QR");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -962,7 +965,7 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
 
         }
 
-        String desktop = "C:\\Users\\Administrator\\Desktop";
+        String desktop = "C:\\Users\\Admin\\Desktop\\ExcelPM";
         JFileChooser fileChooser = new JFileChooser(desktop);
         fileChooser.setDialogTitle("Save Excel File");
 
@@ -1065,7 +1068,7 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
             String ngayThang = txtNgaySinhNV.getText();
             String cccd = txtCccd.getText();
 
-            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate localDate1 = LocalDate.parse(ngayThang, formatter1);
             java.sql.Date ngayThangs = java.sql.Date.valueOf(localDate1);
 
@@ -1154,7 +1157,7 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
                 // String pass = txtPass.getText();
                 String ngayThang = txtNgaySinhNV.getText();
 
-                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate localDate1 = LocalDate.parse(ngayThang, formatter1);
                 java.sql.Date ngayThangs = java.sql.Date.valueOf(localDate1);
 
@@ -1219,6 +1222,18 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
     private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaNVActionPerformed
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        boolean check = false;
+        if(!check){
+            initWebcam();
+            initComponents();
+            check = true;
+        }else{
+            webcam.close();
+            check = false;
+        }
+    }//GEN-LAST:event_jLabel16MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

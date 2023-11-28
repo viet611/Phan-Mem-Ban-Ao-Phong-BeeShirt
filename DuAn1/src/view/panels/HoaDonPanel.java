@@ -26,6 +26,7 @@ import services.HoaDonTimeLineService;
 import services.impl.HoaDonChiTietServiceImpl;
 import services.impl.HoaDonServiceImpl;
 import services.impl.HoaDonTimeLineServiceImpl;
+import services.impl.SanPhamImpl;
 import view.component.MsgBox;
 import view.model.StatusType;
 
@@ -45,7 +46,7 @@ public class HoaDonPanel extends javax.swing.JPanel {
     private List<HoaDon> listHD;
     private List<HoaDon> cloneListHD;
     private List<HoaDon> subList;
-    private int limit = 1;
+    private int limit = 5;
     private int totalPage;
     private HoaDon hd;
 
@@ -134,8 +135,8 @@ public class HoaDonPanel extends javax.swing.JPanel {
         for (HoaDonChiTiet x : hoaDonChiTietService.getAllByIdHoaDon(idHD)) {
             Object[] rowData = {
                 stt,
-                "ma sp",
-                "tên sp",
+                x.getSanPhamChiTiet().getId(),
+                new SanPhamImpl().getNameID(x.getSanPhamChiTiet().getId_SanPham()),
                 x.getSoLuong(),
                 x.getThanhTien()
             };
@@ -145,13 +146,13 @@ public class HoaDonPanel extends javax.swing.JPanel {
     }
 
     public void loadDataTableHoaDon(int page) {
-        int stt = 0;
-        totalPage = (Integer) listHD.size() / limit;
+        int stt = 1;
+        totalPage = (Integer) listHD.size() / limit +1;
         DefaultTableModel dtm = (DefaultTableModel) tblHoaDon.getModel();
         dtm.setRowCount(0);
 
-        int min = page * limit - 1;
-        int max = (page + 1) * limit - 1;
+        int min = (page-1) * limit;
+        int max = page* limit;
         if (max >= listHD.size()) {
             subList = listHD.subList(min, listHD.size());
         } else {
@@ -182,9 +183,9 @@ public class HoaDonPanel extends javax.swing.JPanel {
                     break;
             }
             Object[] rowData = {
-                stt+(page*limit),
+                stt+((page-1)*limit),
                 x.getMa(),
-                x.getNhanVien(),
+                x.getNhanVien().getTen(),
                 x.getTenKhachHang(),
                 x.getSdt(),
                 x.getDiaChi(),
