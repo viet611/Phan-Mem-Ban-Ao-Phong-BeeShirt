@@ -92,7 +92,7 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
     private WebcamPanel panel = null;
     private Webcam webcam = null;
     private Executor executor = Executors.newSingleThreadExecutor(this);
-
+boolean check = false;
     /**
      * Creates new form Form_1
      */
@@ -1224,7 +1224,7 @@ public class NhanVienPanel extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_txtMaNVActionPerformed
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        boolean check = false;
+        
         if(!check){
             initWebcam();
             initComponents();
