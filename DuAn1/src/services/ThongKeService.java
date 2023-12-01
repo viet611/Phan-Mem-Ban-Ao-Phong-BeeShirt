@@ -19,4 +19,8 @@ public interface ThongKeService {
     List<HoaDon> getHDByMonth(String date);
     List<HoaDon> getHDByYear(String date);
     List<HoaDonChiTiet> getSumSoLuong( );
+    List<HoaDon> getHDByBetweenAnd(String dateTo,String datefrom);
+    List<HoaDon> getChartByYear(String yearString,String monthString);
+    List<HoaDon> getChartByBteweenAnd(String dateTo,String datefrom);
+    List<HoaDon> getChartByMonth(String dateString,String monthString);
 }

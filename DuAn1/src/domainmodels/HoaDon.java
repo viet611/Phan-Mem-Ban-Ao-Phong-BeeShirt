@@ -57,6 +57,13 @@ public class HoaDon {
         this.daXoa = daXoa;
     }
 
+    public HoaDon(Double tongTien, Date ngayTao) {
+        this.tongTien = tongTien;
+        this.ngayTao = ngayTao;
+    }
+    
+    
+
     public Integer getId() {
         return id;
     }
