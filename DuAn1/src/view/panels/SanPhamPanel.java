@@ -1146,6 +1146,12 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
 
         jLabel4.setText("Tìm Kiếm");
 
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("Màu Sắc");
 
         cbo_FilterSPCTMS.addItemListener(new java.awt.event.ItemListener() {
@@ -3041,6 +3047,10 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
             webCam.close();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

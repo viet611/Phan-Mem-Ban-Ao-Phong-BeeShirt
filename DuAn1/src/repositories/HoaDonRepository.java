@@ -112,7 +112,7 @@ public class HoaDonRepository {
             e.printStackTrace();
             return false;
         }
-        hdtlRepository.insert(new HoaDonTimeLine(null, hoaDon, 0, new Date(), new Date(), hoaDon.getTaoBoi(), hoaDon.getSuaBoi(), Boolean.FALSE));
+        hdtlRepository.insert(new HoaDonTimeLine(null, this.getAll().get(0), 0, new Date(), new Date(), hoaDon.getTaoBoi(), hoaDon.getSuaBoi(), Boolean.FALSE));
         return true;
     }
 
@@ -148,6 +148,7 @@ public class HoaDonRepository {
             e.printStackTrace();
             return false;
         }
+        hdtlRepository.insert(new HoaDonTimeLine(null, hoaDon, hoaDon.getTrangThai(), new Date(), new Date(), hoaDon.getTaoBoi(), hoaDon.getSuaBoi(), Boolean.FALSE));
         return true;
     }
 
