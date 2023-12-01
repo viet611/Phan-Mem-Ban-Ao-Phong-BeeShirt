@@ -42,5 +42,25 @@ public class ThongKeImpl implements ThongKeService{
     public List<HoaDon> getHDByYear(String date) {
         return thongKeRepo.getHDByYear(date);
     }
+
+    @Override
+    public List<HoaDon> getHDByBetweenAnd(String dateTo, String datefrom) {
+        return thongKeRepo.getHDByBetweenAnd(dateTo, datefrom);
+    }
+
+    @Override
+    public List<HoaDon> getChartByYear(String yearString, String monthString) {
+        return thongKeRepo.getChartByYear(yearString, monthString);
+    }
+
+    @Override
+    public List<HoaDon> getChartByBteweenAnd(String dateTo, String datefrom) {
+        return thongKeRepo.getChartByBetWeenAnd(dateTo, datefrom);
+    }
+
+    @Override
+    public List<HoaDon> getChartByMonth(String dateString, String monthString) {
+        return thongKeRepo.getChartByMonth(dateString, monthString);
+    }
     
 }

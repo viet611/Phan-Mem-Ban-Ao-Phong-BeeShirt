@@ -3,30 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/ChiTietSanPhamCT.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/services/KhuyenMaiService.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/services/HoaDonService.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/SanPhamCTPanel.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/DoanhThuPanel.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/BanHangPanel.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/ThemSanPhamCT.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/CapNhatSanPhamCT.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/services/impl/ThongKeImpl.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/HoaDonPanel.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/SanPhamPanel.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/services/impl/HoaDonServiceImpl.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/NhanVienPanel.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/ThemDacTrungSPCT.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/repositories/HoaDonRepository.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/ThemSPCT.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/services/impl/KhuyenMaiServiceIMPL.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/domainmodels/HoaDon.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/ultilities/DBConnect.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/KhachHangPanel.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/repositories/KhuyenMaiRepository.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/repositories/HoaDonChiTietRepository.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/repositories/ThongKeRpository.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/CapNhatSPCTPannel.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/repositories/ThongKeRpository.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/services/ThongKeService.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/services/impl/ThongKeImpl.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/view/panels/DoanhThuPanel.java</file>
         </group>
     </open-files>
 </project-private>
