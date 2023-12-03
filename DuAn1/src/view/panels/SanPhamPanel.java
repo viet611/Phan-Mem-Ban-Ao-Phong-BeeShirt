@@ -3147,7 +3147,7 @@ public class SanPhamPanel extends javax.swing.JPanel implements Runnable,ThreadF
     public void run() {
         do{
             try {
-                Thread.sleep(100);
+                Thread.sleep(500);
             } catch (Exception e) {
                 e.printStackTrace();
             }

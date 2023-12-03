@@ -64,6 +64,14 @@
       </Properties>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Th&#x1ed1;ng K&#xea; Doanh Thu"/>
+      </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -75,8 +83,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Thong Ke Doanh Thu">
-                <Property name="tabTitle" type="java.lang.String" value="Thong Ke Doanh Thu"/>
+              <JTabbedPaneConstraints tabName="Th&#x1ed1;ng K&#xea; Doanh Thu">
+                <Property name="tabTitle" type="java.lang.String" value="Th&#x1ed1;ng K&#xea; Doanh Thu"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -250,16 +258,16 @@
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="rdo_thang" max="32767" attributes="0"/>
-                              <Component id="txt_Month" max="32767" attributes="0"/>
+                              <Component id="txt_Month" pref="151" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txt_Year" max="32767" attributes="0"/>
-                              <Component id="rdo_nam" pref="118" max="32767" attributes="0"/>
+                              <Component id="rdo_nam" max="32767" attributes="0"/>
+                              <Component id="txt_Year" pref="133" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel8" min="-2" pref="27" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txt_DateTo" min="-2" pref="130" max="-2" attributes="0"/>
@@ -268,18 +276,18 @@
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel9" min="-2" pref="34" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txt_DateFrom" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="55" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -364,10 +372,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_Month">
                   <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Thong Ke Theo Thang"/>
+                    <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea; Theo Th&#xe1;ng"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_MonthFocusGained"/>
@@ -398,11 +403,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_Year">
                   <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Thong Ke Theo Nam"/>
+                    <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea; Theo N&#x103;m"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_YearFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_YearFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
@@ -425,7 +431,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="479" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="462" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -553,8 +559,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Bieu Do Thong Ke Doanh Thu">
-                <Property name="tabTitle" type="java.lang.String" value="Bieu Do Thong Ke Doanh Thu"/>
+              <JTabbedPaneConstraints tabName="Bi&#x1ec3;u &#x110;&#x1ed3; Th&#x1ed1;ng K&#xea; Doanh Thu">
+                <Property name="tabTitle" type="java.lang.String" value="Bi&#x1ec3;u &#x110;&#x1ed3; Th&#x1ed1;ng K&#xea; Doanh Thu"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -616,13 +622,13 @@
                               <Component id="txt_YearBD" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="txt_ToBD" min="-2" pref="129" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="rdo_KHOANGBD" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdo_KHOANGBD" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -668,7 +674,7 @@
                       <ComponentRef name="buttonGroup3"/>
                     </Property>
                     <Property name="selected" type="boolean" value="true"/>
-                    <Property name="text" type="java.lang.String" value="Thang"/>
+                    <Property name="text" type="java.lang.String" value="Th&#xe1;ng"/>
                   </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rdo_MONTHDBItemStateChanged"/>
@@ -679,7 +685,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroup3"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Nam"/>
+                    <Property name="text" type="java.lang.String" value="N&#x103;m"/>
                   </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rdo_YEARBDItemStateChanged"/>
@@ -690,33 +696,51 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroup3"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Khoang Thoi Gian"/>
+                    <Property name="text" type="java.lang.String" value="Kho&#x1ea3;ng Th&#x1edd;i Gian"/>
                   </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rdo_KHOANGBDItemStateChanged"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_MonthBD">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bi&#x1ec3;u &#x110;&#x1ed3; Theo Th&#xe1;ng"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_MonthBDFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_MonthBDFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_YearBD">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bi&#x1ec3;u &#x110;&#x1ed3; Theo N&#x103;m"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_YearBDFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_YearBDFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tu"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1eeb;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_ToBD">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Den"/>
+                    <Property name="text" type="java.lang.String" value="&#x110;&#x1ebf;n"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_FormBD">
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton2">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Bieu Do"/>
+                    <Property name="actionCommand" type="java.lang.String" value="Bi&#x1ec3;u &#x110;&#x1ed3;"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>

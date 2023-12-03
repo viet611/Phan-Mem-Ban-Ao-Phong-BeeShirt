@@ -98,9 +98,11 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         LoadTOPSP();
         jTabbedPane1.setEnabledAt(1, false);
 //        rdo_MONTHDB.setSelected(true);
-//        if(rdo_MONTHDB.isSelected()){
-//            setDataToCharDefaulttMonth(jpanel_chart);
-//        }
+        if(rdo_MONTHDB.isSelected()){
+            txt_YearBD.setEnabled(false);
+            txt_ToBD.setEnabled(false);
+            txt_FormBD.setEnabled(false);
+        }
     }
     
     public ImageIcon ResizeImage(String ImagePath){
@@ -429,7 +431,8 @@ public class DoanhThuPanel extends javax.swing.JPanel {
             dataset.addValue(TongDT, "Doanh Thu" , x.getNgayTao());
         }
         
-        JFreeChart chart = ChartFactory.createBarChart("Bieu Do Doanh Thu ", "Thoi Gian", "So Tien", dataset);
+        JFreeChart chart = ChartFactory.createBarChart("Bieu Do Doanh Thu "+txt_ToBD.getText() +"-"+txt_FormBD.getText(), 
+                "Thoi Gian", "So Tien", dataset);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new Dimension(jpanel.getWidth(),jpanel.getHeight()));
         jpanel.removeAll();
@@ -501,6 +504,8 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Thống Kê Doanh Thu");
+
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -628,8 +633,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
             }
         });
 
-        txt_Month.setForeground(new java.awt.Color(204, 204, 204));
-        txt_Month.setText("Thong Ke Theo Thang");
+        txt_Month.setText("Thống Kê Theo Tháng");
         txt_Month.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_MonthFocusGained(evt);
@@ -650,8 +654,15 @@ public class DoanhThuPanel extends javax.swing.JPanel {
             }
         });
 
-        txt_Year.setForeground(new java.awt.Color(204, 204, 204));
-        txt_Year.setText("Thong Ke Theo Nam");
+        txt_Year.setText("Thống Kê Theo Năm");
+        txt_Year.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_YearFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_YearFocusLost(evt);
+            }
+        });
 
         jButton3.setText("View Bieu Do");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -672,12 +683,12 @@ public class DoanhThuPanel extends javax.swing.JPanel {
                 .addGap(70, 70, 70)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(rdo_thang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_Month))
+                    .addComponent(txt_Month, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_Year)
-                    .addComponent(rdo_nam, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
-                .addGap(37, 37, 37)
+                    .addComponent(rdo_nam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_Year, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -694,7 +705,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -762,7 +773,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -795,7 +806,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Thong Ke Doanh Thu", jPanel4);
+        jTabbedPane1.addTab("Thống Kê Doanh Thu", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -814,7 +825,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
 
         buttonGroup3.add(rdo_MONTHDB);
         rdo_MONTHDB.setSelected(true);
-        rdo_MONTHDB.setText("Thang");
+        rdo_MONTHDB.setText("Tháng");
         rdo_MONTHDB.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rdo_MONTHDBItemStateChanged(evt);
@@ -822,7 +833,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         });
 
         buttonGroup3.add(rdo_YEARBD);
-        rdo_YEARBD.setText("Nam");
+        rdo_YEARBD.setText("Năm");
         rdo_YEARBD.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rdo_YEARBDItemStateChanged(evt);
@@ -830,18 +841,40 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         });
 
         buttonGroup3.add(rdo_KHOANGBD);
-        rdo_KHOANGBD.setText("Khoang Thoi Gian");
+        rdo_KHOANGBD.setText("Khoảng Thời Gian");
         rdo_KHOANGBD.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rdo_KHOANGBDItemStateChanged(evt);
             }
         });
 
-        jLabel11.setText("Tu");
+        txt_MonthBD.setText("Biểu Đồ Theo Tháng");
+        txt_MonthBD.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_MonthBDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_MonthBDFocusLost(evt);
+            }
+        });
 
-        jLabel12.setText("Den");
+        txt_YearBD.setText("Biểu Đồ Theo Năm");
+        txt_YearBD.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_YearBDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_YearBDFocusLost(evt);
+            }
+        });
 
+        jLabel11.setText("Từ");
+
+        jLabel12.setText("Đến");
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Bieu Do");
+        jButton2.setActionCommand("Biểu Đồ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -862,12 +895,12 @@ public class DoanhThuPanel extends javax.swing.JPanel {
                     .addComponent(rdo_YEARBD, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_YearBD, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(105, 105, 105)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_ToBD, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rdo_KHOANGBD))
+                    .addComponent(rdo_KHOANGBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
@@ -914,7 +947,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Bieu Do Thong Ke Doanh Thu", jPanel5);
+        jTabbedPane1.addTab("Biểu Đồ Thống Kê Doanh Thu", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -937,6 +970,8 @@ public class DoanhThuPanel extends javax.swing.JPanel {
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Thống Kê Doanh Thu");
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1092,7 +1127,10 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         txt_FormBD.setText("");
         txt_ToBD.setText("");
-        txt_YearBD.setText("");
+        
+        txt_MonthBD.setText("Biểu Đồ Theo Tháng");
+        
+        //txt_YearBD.setText("");
         txt_FormBD.setEnabled(false);
         txt_ToBD.setEnabled(false);
         txt_YearBD.setEnabled(false);
@@ -1103,7 +1141,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         txt_FormBD.setText("");
         txt_ToBD.setText("");
-        txt_MonthBD.setText("");
+        //txt_MonthBD.setText("");
         txt_FormBD.setEnabled(false);
         txt_ToBD.setEnabled(false);
         txt_MonthBD.setEnabled(false);
@@ -1112,8 +1150,8 @@ public class DoanhThuPanel extends javax.swing.JPanel {
 
     private void rdo_KHOANGBDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdo_KHOANGBDItemStateChanged
         // TODO add your handling code here:
-        txt_MonthBD.setText("");
-        txt_YearBD.setText("");
+        //txt_MonthBD.setText("");
+        //txt_YearBD.setText("");
         txt_MonthBD.setEnabled(false);
         txt_YearBD.setEnabled(false);
         txt_ToBD.setEnabled(true);
@@ -1144,7 +1182,7 @@ public class DoanhThuPanel extends javax.swing.JPanel {
 
     private void txt_MonthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_MonthFocusGained
         // TODO add your handling code here:
-        if (txt_Month.getText().equalsIgnoreCase("Thong Ke Theo Thang")) {
+        if (txt_Month.getText().equalsIgnoreCase("Thống Kê Theo Tháng")) {
             txt_Month.setText(null);
         }
     }//GEN-LAST:event_txt_MonthFocusGained
@@ -1152,9 +1190,52 @@ public class DoanhThuPanel extends javax.swing.JPanel {
     private void txt_MonthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_MonthFocusLost
         // TODO add your handling code here:
         if(txt_Month.getText().length()==0){
-            txt_Month.setText("Thong Ke Theo Thang");
+            txt_Month.setText("Thống Kê Theo Tháng");
         }
     }//GEN-LAST:event_txt_MonthFocusLost
+
+    private void txt_YearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_YearFocusGained
+        // TODO add your handling code here:
+        if(txt_Year.getText().equalsIgnoreCase("Thống Kê Theo Năm")){
+            txt_Year.setText(null);
+        }
+            
+    }//GEN-LAST:event_txt_YearFocusGained
+
+    private void txt_YearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_YearFocusLost
+        // TODO add your handling code here:
+        if(txt_Year.getText().length()==0){
+            txt_Year.setText("Thống Kê Theo Năm");
+        }
+    }//GEN-LAST:event_txt_YearFocusLost
+
+    private void txt_MonthBDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_MonthBDFocusGained
+        // TODO add your handling code here:
+        if(txt_MonthBD.getText().equalsIgnoreCase("Biểu Đồ theo Tháng")){
+            txt_MonthBD.setText(null);
+        }
+    }//GEN-LAST:event_txt_MonthBDFocusGained
+
+    private void txt_MonthBDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_MonthBDFocusLost
+        // TODO add your handling code here:
+        if(txt_MonthBD.getText().length()==0){
+            txt_MonthBD.setText("Biểu Đồ Theo Tháng");
+        }
+    }//GEN-LAST:event_txt_MonthBDFocusLost
+
+    private void txt_YearBDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_YearBDFocusGained
+        // TODO add your handling code here:
+        if(txt_YearBD.getText().equalsIgnoreCase("Biểu Đồ Theo Năm")){
+            txt_YearBD.setText(null);
+        }
+    }//GEN-LAST:event_txt_YearBDFocusGained
+
+    private void txt_YearBDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_YearBDFocusLost
+        // TODO add your handling code here:
+        if(txt_YearBD.getText().length()==0){
+            txt_YearBD.setText("Biểu Đồ Theo Năm");
+        }
+    }//GEN-LAST:event_txt_YearBDFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
