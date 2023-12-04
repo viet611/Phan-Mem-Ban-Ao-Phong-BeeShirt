@@ -70,7 +70,7 @@ public class KhachHangPanel extends javax.swing.JPanel {
         String[] hears = {"STT", "Mã KH", "Tên", "Giới Tính", "Ngày sinh", "SĐT", "Địa chỉ"};
         dtm.setColumnIdentifiers(hears);
         tbQuanLyKhachMuaHang.setModel(dtm1);
-        String[] hears1 = {"STT", "Mã KH", "Tên", "Giới Tính", "SĐT", "Số tiền đã mua", "Hạng"};
+        String[] hears1 = {"STT", "Mã HĐ", "Ngày giao dịch", "Tổng tiền", "Trạng thái"};
         dtm1.setColumnIdentifiers(hears1);
         // loadSoTrang();
         list = service.getAllKh();
@@ -100,12 +100,12 @@ public class KhachHangPanel extends javax.swing.JPanel {
     /* private void loadSoTrang() {
         jLabel1.setText(index + 1 + "");
     }*/
-//    private void fillToTableLSDD(List<Object> list) {
-//        dtm1.setRowCount(0);
-//        for (int i = 0; i < list.size(); i++) {
-//            dtm.addRow((Object[]) list.get(i));
-//        }
-//    }
+    private void fillToTableLSDD(List<Object> list) {
+        dtm1.setRowCount(0);
+        for (int i = 0; i < list.size(); i++) {
+            dtm1.addRow((Object[]) list.get(i));
+        }
+    }
 
     public void clearFrom() {
         lblMa.setText("");
@@ -769,7 +769,12 @@ public class KhachHangPanel extends javax.swing.JPanel {
         }*/
         String maKH = lblMa.getText().trim();
         listLSGD = khRepo.listLSGDByMaKH(maKH);
-//        fillToTableLSDD(listLSGD);
+        fillToTableLSDD(listLSGD);
+        if (evt.getClickCount() == 1) {
+            if (row != -1) {
+                jTabbedPane1.setSelectedIndex(1);
+            }
+        }
     }//GEN-LAST:event_tbQuanLyKhachHangMouseClicked
 
     private void rdNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNamActionPerformed

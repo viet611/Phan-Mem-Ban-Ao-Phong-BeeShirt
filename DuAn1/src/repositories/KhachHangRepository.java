@@ -413,13 +413,13 @@ public class KhachHangRepository {
         try {
             qry = "SELECT HD.id AS ID , HD.ma AS MaHoaDon , hd.ngay_tao AS NgayThanhToan , \n"
                     + "                  	HD.tong_tien AS ThanhTien , HD.trang_thai AS TrangThai from hoa_don as HD\n"
-                    + "                    	JOIN khach_hang ON khach_hang.id = HD.id\n"
+                    + "                    	JOIN khach_hang ON khach_hang.id = HD.id_khach_hang\n"
                     + "                    	WHERE khach_hang.ma = '" + maKh + "'";
             con = DBConnect.getConnection();
             pstm = con.prepareStatement(qry);
             rs = pstm.executeQuery();
             List<Object> listLSGD = new ArrayList<>();
-            int i = 0;
+            int i = 1;
             DecimalFormat decimalFormat = new DecimalFormat("#,##");
             while (rs.next()) {
                 

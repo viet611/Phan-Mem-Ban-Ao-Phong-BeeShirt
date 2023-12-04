@@ -288,7 +288,7 @@ public class ThongKeRpository {
         List<HoaDon> hdct = new ArrayList<>();
         String sql = null;
         try {
-            sql = "select * from hoa_don where DATEPART (DAY FROM hoa_don.ngay_tao)='"+dateString+"' AND MONTH(hoa_don.ngay_tao)= '"+monthString+"' AND trang_thai > 0 AND trang_thai < 5";
+            sql = "select * from hoa_don where DATEPART (DAY, hoa_don.ngay_tao)='"+dateString+"' AND MONTH(hoa_don.ngay_tao)= '"+monthString+"' AND trang_thai > 0 AND trang_thai < 5";
             //sql = "select * from hoa_don_chi_tiet ORDER BY hoa_don_chi_tiet.id DESC";
             ResultSet rs = JDBCHelper.excuteQuery(sql);
             while (rs.next()) {

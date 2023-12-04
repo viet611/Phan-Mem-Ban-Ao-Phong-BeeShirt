@@ -4,6 +4,15 @@
  */
 package view.panels;
 
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 import domainmodels.ChatLieu;
 import domainmodels.HoaDon;
 import domainmodels.HoaDonChiTiet;
@@ -18,9 +27,14 @@ import domainmodels.PTTTChiTiet;
 import domainmodels.SanPham;
 import domainmodels.SanPhamCT;
 import domainmodels.ThuongHieu;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
+import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -57,7 +71,7 @@ import ultilities.MsgBox;
  *
  * @author Admin
  */
-public class BanHangPanel extends javax.swing.JPanel {
+public class BanHangPanel extends javax.swing.JPanel implements Runnable, ThreadFactory {
 
     /**
      * Creates new form Form_Home
@@ -113,7 +127,7 @@ public class BanHangPanel extends javax.swing.JPanel {
         dcbm.addElement("Chuyển khoản");
     }
 
-    public void LoadCBOFilter(){
+    public void LoadCBOFilter() {
         List<ThuongHieu> thuongHieu = thService.getName();
         List<MauSac> mauSac = msService.getName();
         List<KichThuoc> kichThuoc = ktService.getName();
@@ -129,7 +143,7 @@ public class BanHangPanel extends javax.swing.JPanel {
         cbo_FilterSPCTMPH.setModel(new DefaultComboBoxModel(muaPhuHop.toArray()));
         System.out.println(muaPhuHop.toArray());
     }
-    
+
     public void loadTableHDCTTheoIDHD(int id) {
         tongTien = 0;
         listHDCT = hdctService.getAllByIdHoaDon(id);
@@ -205,26 +219,26 @@ public class BanHangPanel extends javax.swing.JPanel {
             //System.out.println("name SP" +MaSP);
             //id mau sac
             int id_mauSac = x.getId_MauSac();
-            String nameMS=msService.getNameByID(id_mauSac);
+            String nameMS = msService.getNameByID(id_mauSac);
             //id thuong hieu
             int id_thuongHieu = x.getId_ThuongHieu();
             String nameTH = thService.getNameByID(id_thuongHieu);
             //System.out.println("name TH: " +nameTH);
             //id kich thuoc
-            int id_kichThuoc =x.getId_KichThuoc();
+            int id_kichThuoc = x.getId_KichThuoc();
             String nameKT = ktService.getNameByID(id_kichThuoc);
             //id_KieuDang;
-            int id_kieuDang=x.getId_KieuDang();
+            int id_kieuDang = x.getId_KieuDang();
             String nameKD = kdService.getNameByID(id_kieuDang);
             //id_MuaPhuHop;
-            int id_muaPhuHop =x.getId_MuaPhuHop();
-            String nameMPH= mphService.getNameByID(id_muaPhuHop);
+            int id_muaPhuHop = x.getId_MuaPhuHop();
+            String nameMPH = mphService.getNameByID(id_muaPhuHop);
             //id_MDSD;
             int id_MDSD = x.getId_MDSD();
-            String nameMDSD= msdsService.getNameByID(id_MDSD);
+            String nameMDSD = msdsService.getNameByID(id_MDSD);
             //id_ChatLieu;
-            int id_chatLieu=x.getId_ChatLieu();
-            String nameCL =clService.getNameByID(id_chatLieu);
+            int id_chatLieu = x.getId_ChatLieu();
+            String nameCL = clService.getNameByID(id_chatLieu);
             //id_HoaTiet;
             int id_hoaTiet = x.getId_HoaTiet();
             String nameHT = htService.getNameByID(id_hoaTiet);
@@ -235,33 +249,33 @@ public class BanHangPanel extends javax.swing.JPanel {
             String ma = x.getMa();
             //goi_Tinh;
             boolean gioi_tinh = x.isGoi_Tinh();
-            String gioiTinh=null;
-            if(gioi_tinh==true){
-                gioiTinh="nam";
-            }else{
-                gioiTinh="Nữ";
+            String gioiTinh = null;
+            if (gioi_tinh == true) {
+                gioiTinh = "nam";
+            } else {
+                gioiTinh = "Nữ";
             }
             //so_Luong;
             float so_Luong = x.getSo_Luong();
             //gia;
-            float gia=x.getGia();
+            float gia = x.getGia();
             //mo_Ta;
-            String mo_ta=x.getMo_Ta();
+            String mo_ta = x.getMo_Ta();
             //trang_thai;
-            int trang_thai =x.getTrang_thai();
-            boolean trangThai=true;
-            if(trang_thai==0){
-                trangThai=true;
-            }else{
-                trangThai=false;
+            int trang_thai = x.getTrang_thai();
+            boolean trangThai = true;
+            if (trang_thai == 0) {
+                trangThai = true;
+            } else {
+                trangThai = false;
             }
 //            tb.addRow(new Object[]{
 //                id_hinhAnh, ma, id_sanPham,id_thuongHieu, id_mauSac, id_kichThuoc, so_Luong, gia, id_chatLieu, id_kieuDang,  
 //                id_muaPhuHop, id_MDSD, id_hoaTiet, gioiTinh, StatusType.DANGHOATDONG
 //            });
             tb.addRow(new Object[]{
-                count, ma, MaSP, trangThai,nameTH, nameMS, nameKT, so_Luong, gia, nameCL,  
-                nameKD, nameMPH, nameMDSD, nameHT, gioiTinh,id_hinhAnh
+                count, ma, MaSP, trangThai, nameTH, nameMS, nameKT, so_Luong, gia, nameCL,
+                nameKD, nameMPH, nameMDSD, nameHT, gioiTinh, id_hinhAnh
             });
             count++;
         }
@@ -286,6 +300,7 @@ public class BanHangPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHDDangCho = new view.component.Table();
         btnHoaDonMoi = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblSanPham = new view.component.Table();
@@ -324,7 +339,7 @@ public class BanHangPanel extends javax.swing.JPanel {
         btnNhanTien = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPTTT = new view.component.Table();
-        jPanel6 = new javax.swing.JPanel();
+        panelQuetMa = new javax.swing.JPanel();
         btnTTThanhCong = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         txtPhieuGG = new javax.swing.JTextField();
@@ -439,21 +454,32 @@ public class BanHangPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel16.setText("jLabel16");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(btnHoaDonMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHoaDonMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addComponent(jScrollPane1))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnHoaDonMoi)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel16)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
@@ -557,45 +583,49 @@ public class BanHangPanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cbo_FilterSPCTMS, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel6))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(cbo_FilterSPCTMS, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbo_FilterSPCTKT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(txtSeachSP, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnTimKiem)))
                         .addGap(18, 18, 18)
-                        .addComponent(cbo_FilterSPCTKT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtSeachSP, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTimKiem)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbo_FilterSPCTMPH, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbo_FilterSPCTKD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbo_FilterSPCTCL, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13)
-                        .addGap(6, 6, 6)
-                        .addComponent(cbo_FilterSPCTTH, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnClear)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbo_FilterSPCTMPH, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbo_FilterSPCTKD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbo_FilterSPCTCL, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel13)
+                                .addGap(6, 6, 6)
+                                .addComponent(cbo_FilterSPCTTH, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnClear)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -609,18 +639,22 @@ public class BanHangPanel extends javax.swing.JPanel {
                     .addComponent(jLabel15)
                     .addComponent(cbo_FilterSPCTKD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbo_FilterSPCTMS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_FilterSPCTKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel10)
-                    .addComponent(cbo_FilterSPCTCL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(cbo_FilterSPCTTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbo_FilterSPCTMS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_FilterSPCTKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10)
+                            .addComponent(cbo_FilterSPCTCL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
+                            .addComponent(cbo_FilterSPCTTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(169, 169, 169))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -675,7 +709,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTimKH, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTimKH))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -684,8 +718,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(cbGiaoHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(135, 135, 135))
-                            .addComponent(jScrollPane2))))
-                .addContainerGap())
+                            .addComponent(jScrollPane2)))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -744,16 +777,21 @@ public class BanHangPanel extends javax.swing.JPanel {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnNhanTien, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtTienTT))
-                        .addComponent(cbbThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTienTT, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbbThanhToan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNhanTien, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -770,19 +808,13 @@ public class BanHangPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quét mã SP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 1, 14))); // NOI18N
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        panelQuetMa.setBackground(new java.awt.Color(255, 255, 255));
+        panelQuetMa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelQuetMaMouseClicked(evt);
+            }
+        });
+        panelQuetMa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnTTThanhCong.setBackground(new java.awt.Color(153, 255, 102));
         btnTTThanhCong.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -821,7 +853,7 @@ public class BanHangPanel extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPhieuGG, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addComponent(txtPhieuGG)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPhieuGG)
                 .addContainerGap())
@@ -869,29 +901,37 @@ public class BanHangPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelQuetMa, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(170, 170, 170)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTongTien1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTienDaThanhToan, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtConLai, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(btnTTThanhCong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtTongTien1)
+                                .addGap(20, 20, 20))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTienDaThanhToan)
+                                    .addComponent(txtConLai))
+                                .addContainerGap())))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTTThanhCong, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -899,14 +939,19 @@ public class BanHangPanel extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelQuetMa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 316, Short.MAX_VALUE)
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -917,16 +962,12 @@ public class BanHangPanel extends javax.swing.JPanel {
                             .addComponent(txtTienDaThanhToan)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(txtConLai))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(btnTTThanhCong, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTTThanhCong, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1073,7 +1114,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                     MsgBox.alert(this, "Đã áp dụng giảm giá");
                     khuyenMai = x;
                     tongTien -= x.getTienGiam();
-                    tienConLai -=x.getTienGiam();
+                    tienConLai -= x.getTienGiam();
                     txtTienGiam.setText("-" + String.valueOf(x.getTienGiam()));
                     txtTongTien1.setText(String.valueOf(tongTien));
                     txtTienGiam.setText(String.valueOf(tienConLai));
@@ -1137,7 +1178,7 @@ public class BanHangPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNhanTienActionPerformed
 
     private void cbo_FilterSPCTMSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbo_FilterSPCTMSItemStateChanged
-        String mauSacName =null;
+        String mauSacName = null;
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             Object selectedItem = cbo_FilterSPCTMS.getSelectedItem();
             if (selectedItem instanceof MauSac) {
@@ -1149,8 +1190,8 @@ public class BanHangPanel extends javax.swing.JPanel {
                 System.out.println("Selected item is not an instance of MauSac");
             }
             int id_MauSac = msService.getIDbyName(mauSacName);
-            System.out.println("id ms: "+id_MauSac);
-            
+            System.out.println("id ms: " + id_MauSac);
+
             DefaultTableModel tb = (DefaultTableModel) tblSanPham.getModel();
             tb.setRowCount(0);
             List<SanPhamCT> listSPCT = spctService.filterMauSac(id_MauSac);
@@ -1222,7 +1263,7 @@ public class BanHangPanel extends javax.swing.JPanel {
 
     private void cbo_FilterSPCTKTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbo_FilterSPCTKTItemStateChanged
         // TODO add your handling code here:
-        String ktName =null;
+        String ktName = null;
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             Object selectedItem = cbo_FilterSPCTKT.getSelectedItem();
             if (selectedItem instanceof KichThuoc) {
@@ -1234,7 +1275,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 System.out.println("Selected item is not an instance of MauSac");
             }
             int id_KT = ktService.getIDbyName(ktName);
-            System.out.println("id ms: "+id_KT);
+            System.out.println("id ms: " + id_KT);
 
             DefaultTableModel tb = (DefaultTableModel) tblSanPham.getModel();
             tb.setRowCount(0);
@@ -1306,7 +1347,7 @@ public class BanHangPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbo_FilterSPCTKTItemStateChanged
 
     private void cbo_FilterSPCTCLItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbo_FilterSPCTCLItemStateChanged
-        String clName =null;
+        String clName = null;
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             Object selectedItem = cbo_FilterSPCTCL.getSelectedItem();
             if (selectedItem instanceof ChatLieu) {
@@ -1318,8 +1359,8 @@ public class BanHangPanel extends javax.swing.JPanel {
                 System.out.println("Selected item is not an instance of MauSac");
             }
             int id_CL = clService.getIDbyName(clName);
-            System.out.println("id ms: "+id_CL);
-            
+            System.out.println("id ms: " + id_CL);
+
             DefaultTableModel tb = (DefaultTableModel) tblSanPham.getModel();
             tb.setRowCount(0);
             List<SanPhamCT> listSPCT = spctService.filterChatLieu(id_CL);
@@ -1354,11 +1395,11 @@ public class BanHangPanel extends javax.swing.JPanel {
                     trangThai = false;
                 }
                 tb.addRow(new Object[]{
-                    count,ma, spService.getNameByIDSP(x.getId_SanPham()), trangThai, thService.getNameByID(x.getId_ThuongHieu()),
-                    msService.getNameByID(x.getId_MauSac()), ktService.getNameByID(x.getId_KichThuoc()), 
-                    so_Luong, gia,clService.getNameByID(x.getId_ChatLieu()),kdService.getNameByID(x.getId_KieuDang()), 
-                    mphService.getNameByID(x.getId_MuaPhuHop()), msdsService.getNameByID(x.getId_MDSD()), 
-                    htService.getNameByID(x.getId_HoaTiet()),gioiTinh, id_hinhAnh
+                    count, ma, spService.getNameByIDSP(x.getId_SanPham()), trangThai, thService.getNameByID(x.getId_ThuongHieu()),
+                    msService.getNameByID(x.getId_MauSac()), ktService.getNameByID(x.getId_KichThuoc()),
+                    so_Luong, gia, clService.getNameByID(x.getId_ChatLieu()), kdService.getNameByID(x.getId_KieuDang()),
+                    mphService.getNameByID(x.getId_MuaPhuHop()), msdsService.getNameByID(x.getId_MDSD()),
+                    htService.getNameByID(x.getId_HoaTiet()), gioiTinh, id_hinhAnh
                 });
                 count++;
             }
@@ -1367,7 +1408,7 @@ public class BanHangPanel extends javax.swing.JPanel {
 
     private void cbo_FilterSPCTTHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbo_FilterSPCTTHItemStateChanged
         // TODO add your handling code here:
-        String thName =null;
+        String thName = null;
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             Object selectedItem = cbo_FilterSPCTTH.getSelectedItem();
             if (selectedItem instanceof ThuongHieu) {
@@ -1379,7 +1420,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 System.out.println("Selected item is not an instance of MauSac");
             }
             int id_CL = thService.getIDbyName(thName);
-            System.out.println("id ms: "+id_CL);
+            System.out.println("id ms: " + id_CL);
 
             DefaultTableModel tb = (DefaultTableModel) tblSanPham.getModel();
             tb.setRowCount(0);
@@ -1415,11 +1456,11 @@ public class BanHangPanel extends javax.swing.JPanel {
                     trangThai = false;
                 }
                 tb.addRow(new Object[]{
-                    count,ma, spService.getNameByIDSP(x.getId_SanPham()), trangThai, thService.getNameByID(x.getId_ThuongHieu())
-                    , msService.getNameByID(x.getId_MauSac()), ktService.getNameByID(x.getId_KichThuoc()),
-                    so_Luong, gia,clService.getNameByID(x.getId_ChatLieu()),kdService.getNameByID(x.getId_KieuDang()),
+                    count, ma, spService.getNameByIDSP(x.getId_SanPham()), trangThai, thService.getNameByID(x.getId_ThuongHieu()),
+                    msService.getNameByID(x.getId_MauSac()), ktService.getNameByID(x.getId_KichThuoc()),
+                    so_Luong, gia, clService.getNameByID(x.getId_ChatLieu()), kdService.getNameByID(x.getId_KieuDang()),
                     mphService.getNameByID(x.getId_MuaPhuHop()), msdsService.getNameByID(x.getId_MDSD()),
-                    htService.getNameByID(x.getId_HoaTiet()),gioiTinh, id_hinhAnh
+                    htService.getNameByID(x.getId_HoaTiet()), gioiTinh, id_hinhAnh
                 });
                 count++;
             }
@@ -1428,7 +1469,7 @@ public class BanHangPanel extends javax.swing.JPanel {
 
     private void cbo_FilterSPCTMPHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbo_FilterSPCTMPHItemStateChanged
         // TODO add your handling code here:
-        String mphName =null;
+        String mphName = null;
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             Object selectedItem = cbo_FilterSPCTMPH.getSelectedItem();
             if (selectedItem instanceof MuaPhuHop) {
@@ -1440,7 +1481,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 System.out.println("Selected item is not an instance of MauSac");
             }
             int id_MPH = mphService.getIDbyName(mphName);
-            System.out.println("id ms: "+id_MPH);
+            System.out.println("id ms: " + id_MPH);
 
             DefaultTableModel tb = (DefaultTableModel) tblSanPham.getModel();
             tb.setRowCount(0);
@@ -1476,11 +1517,11 @@ public class BanHangPanel extends javax.swing.JPanel {
                     trangThai = false;
                 }
                 tb.addRow(new Object[]{
-                    count,ma, spService.getNameByIDSP(x.getId_SanPham()),trangThai, thService.getNameByID(x.getId_ThuongHieu()),
+                    count, ma, spService.getNameByIDSP(x.getId_SanPham()), trangThai, thService.getNameByID(x.getId_ThuongHieu()),
                     msService.getNameByID(x.getId_MauSac()), ktService.getNameByID(x.getId_KichThuoc()),
-                    so_Luong, gia,clService.getNameByID(x.getId_ChatLieu()),kdService.getNameByID(x.getId_KieuDang()),
+                    so_Luong, gia, clService.getNameByID(x.getId_ChatLieu()), kdService.getNameByID(x.getId_KieuDang()),
                     mphService.getNameByID(x.getId_MuaPhuHop()), msdsService.getNameByID(x.getId_MDSD()),
-                    htService.getNameByID(x.getId_HoaTiet()),gioiTinh, id_hinhAnh
+                    htService.getNameByID(x.getId_HoaTiet()), gioiTinh, id_hinhAnh
                 });
                 count++;
             }
@@ -1490,7 +1531,7 @@ public class BanHangPanel extends javax.swing.JPanel {
     private void cbo_FilterSPCTKDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbo_FilterSPCTKDItemStateChanged
         // TODO add your handling code here:
 
-        String kdName =null;
+        String kdName = null;
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             Object selectedItem = cbo_FilterSPCTKD.getSelectedItem();
             if (selectedItem instanceof KieuDang) {
@@ -1502,7 +1543,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 System.out.println("Selected item is not an instance of MauSac");
             }
             int id_KD = kdService.getIDbyName(kdName);
-            System.out.println("id ms: "+id_KD);
+            System.out.println("id ms: " + id_KD);
 
             DefaultTableModel tb = (DefaultTableModel) tblSanPham.getModel();
             tb.setRowCount(0);
@@ -1538,10 +1579,10 @@ public class BanHangPanel extends javax.swing.JPanel {
                     trangThai = false;
                 }
                 tb.addRow(new Object[]{
-                    count,ma, spService.getNameByIDSP(x.getId_SanPham()), trangThai, thService.getNameByID(x.getId_ThuongHieu()), msService.getNameByID(x.getId_MauSac()), ktService.getNameByID(x.getId_KichThuoc()),
-                    so_Luong, gia,clService.getNameByID(x.getId_ChatLieu()),kdService.getNameByID(x.getId_KieuDang()),
+                    count, ma, spService.getNameByIDSP(x.getId_SanPham()), trangThai, thService.getNameByID(x.getId_ThuongHieu()), msService.getNameByID(x.getId_MauSac()), ktService.getNameByID(x.getId_KichThuoc()),
+                    so_Luong, gia, clService.getNameByID(x.getId_ChatLieu()), kdService.getNameByID(x.getId_KieuDang()),
                     mphService.getNameByID(x.getId_MuaPhuHop()), msdsService.getNameByID(x.getId_MDSD()),
-                    htService.getNameByID(x.getId_HoaTiet()),gioiTinh, id_hinhAnh
+                    htService.getNameByID(x.getId_HoaTiet()), gioiTinh, id_hinhAnh
                 });
                 count++;
             }
@@ -1551,6 +1592,33 @@ public class BanHangPanel extends javax.swing.JPanel {
     private void cbo_FilterSPCTCLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_FilterSPCTCLActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_FilterSPCTCLActionPerformed
+
+    private WebcamPanel panel = null;
+    private Webcam webCam = null;
+    private static final long serialVersionUID = 6441489157408381878L;
+    private Executor executor = Executors.newSingleThreadExecutor(this);
+
+    private void innitCam() {
+        Dimension size = WebcamResolution.QVGA.getSize();
+        webCam = Webcam.getWebcams().get(0);
+        webCam.setViewSize(size);
+        panel = new WebcamPanel(webCam);
+        panel.setPreferredSize(size);
+        panel.setFPSDisplayed(true);
+        panelQuetMa.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 250, 210));
+        executor.execute(this);
+    }
+    boolean c = true;
+    private void panelQuetMaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelQuetMaMouseClicked
+
+
+
+
+    }//GEN-LAST:event_panelQuetMaMouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        innitCam();
+    }//GEN-LAST:event_jLabel16MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1576,6 +1644,7 @@ public class BanHangPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1591,7 +1660,6 @@ public class BanHangPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1599,6 +1667,7 @@ public class BanHangPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JPanel panelQuetMa;
     private view.component.Table tblGioHang;
     private view.component.Table tblHDDangCho;
     private view.component.Table tblPTTT;
@@ -1616,4 +1685,40 @@ public class BanHangPanel extends javax.swing.JPanel {
     private javax.swing.JLabel txtTongTien;
     private javax.swing.JLabel txtTongTien1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        do {
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Result result = null;
+            BufferedImage image = null;
+            if (webCam.isOpen()) {
+                if ((image = webCam.getImage()) == null) {
+                    continue;
+                }
+            }
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitMap = new BinaryBitmap(new HybridBinarizer(source));
+            try {
+                result = new MultiFormatReader().decode(bitMap);
+
+            } catch (Exception e) {
+                //e.printStackTrace();
+            }
+            if (result != null) {
+                System.out.println(result.getText());
+            }
+        } while (true);
+    }
+
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, "My Thread");
+        t.setDaemon(true);//rootPaneCheckingEnabled
+        return t;
+    }
 }
