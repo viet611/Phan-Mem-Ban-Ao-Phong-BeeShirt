@@ -404,12 +404,12 @@ public class VoucherPanel extends javax.swing.JPanel {
         km.setMa(txtMa.getText());
         km.setTen(txtTen.getText());
         String ngayBD = txtNgayBatDau.getText();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate1 = LocalDate.parse(ngayBD, formatter1);
         java.sql.Date ngayBDs = java.sql.Date.valueOf(localDate1);
         km.setNgayBD(ngayBDs);
         String ngayKT = txtNgayKetThuc.getText();
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate2 = LocalDate.parse(ngayKT, formatter2);
         java.sql.Date ngayKTs = java.sql.Date.valueOf(localDate2);
         km.setNgayKT(ngayKTs);

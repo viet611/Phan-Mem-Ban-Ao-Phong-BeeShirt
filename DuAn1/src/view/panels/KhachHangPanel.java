@@ -187,11 +187,8 @@ public class KhachHangPanel extends javax.swing.JPanel {
         cbbLoc = new com.raven.suportSwing.Combobox();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        txtTimKiemMuaHang = new com.raven.suportSwing.TextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbQuanLyKhachMuaHang = new com.raven.suportSwing.TableColumn();
-        btnShort1 = new com.raven.suportSwing.MyButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1081, 773));
@@ -600,21 +597,6 @@ public class KhachHangPanel extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setText("Tìm kiếm:");
-
-        txtTimKiemMuaHang.setLabelText("");
-        txtTimKiemMuaHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTimKiemMuaHangActionPerformed(evt);
-            }
-        });
-        txtTimKiemMuaHang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimKiemMuaHangKeyReleased(evt);
-            }
-        });
-
         tbQuanLyKhachMuaHang.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tbQuanLyKhachMuaHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -639,47 +621,21 @@ public class KhachHangPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tbQuanLyKhachMuaHang);
 
-        btnShort1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnShort1.setText("Sort");
-        btnShort1.setBorderColor(new java.awt.Color(100, 149, 237));
-        btnShort1.setColorClick(new java.awt.Color(100, 149, 237));
-        btnShort1.setColorOver(new java.awt.Color(238, 244, 244));
-        btnShort1.setRadius(10);
-        btnShort1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShort1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemMuaHang, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnShort1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1033, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiemMuaHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnShort1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lịch sử mua hàng", jPanel3);
@@ -904,21 +860,9 @@ public class KhachHangPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNgayThangActionPerformed
 
-    private void txtTimKiemMuaHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemMuaHangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemMuaHangActionPerformed
-
-    private void txtTimKiemMuaHangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemMuaHangKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemMuaHangKeyReleased
-
     private void tbQuanLyKhachMuaHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbQuanLyKhachMuaHangMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tbQuanLyKhachMuaHangMouseClicked
-
-    private void btnShort1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShort1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnShort1ActionPerformed
 
     private void btnShortTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShortTenActionPerformed
         // TODO add your handling code here:
@@ -1035,7 +979,6 @@ public class KhachHangPanel extends javax.swing.JPanel {
     private com.raven.suportSwing.MyButton btnExport;
     private com.raven.suportSwing.MyButton btnImport;
     private com.raven.suportSwing.MyButton btnReload;
-    private com.raven.suportSwing.MyButton btnShort1;
     private com.raven.suportSwing.MyButton btnShortTen;
     private com.raven.suportSwing.MyButton btnSua;
     private com.raven.suportSwing.MyButton btnThem;
@@ -1046,7 +989,6 @@ public class KhachHangPanel extends javax.swing.JPanel {
     private javax.swing.JLabel id;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1072,7 +1014,6 @@ public class KhachHangPanel extends javax.swing.JPanel {
     private com.raven.suportSwing.TextField txtNgayThang;
     private com.raven.suportSwing.TextField txtPhoneNumber;
     private com.raven.suportSwing.TextField txtTen;
-    private com.raven.suportSwing.TextField txtTimKiemMuaHang;
     private com.raven.suportSwing.TextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
 }
