@@ -186,7 +186,7 @@ public class ThuongHieuResponsitory {
         pstm.setString(2, "%" + ma + "%");
         ResultSet result = pstm.executeQuery();
         while (result.next()) {
-                sp.add(new ThuongHieu(result.getInt(1), result.getString(3),result.getString(2),result.getInt(4)));
+                sp.add(new ThuongHieu(result.getInt(1), result.getString(2),result.getString(3),result.getInt(4)));
             }
         } catch (Exception e) {
             System.out.println("Lôi truy " + sql);

@@ -455,4 +455,33 @@ public class SanPhamCTResponsitory {
         }
         return sp;
     }
+    
+    public List<SanPhamCT> search(String ma){
+        List<SanPhamCT> sp = new ArrayList<>();
+        String sql=null;
+        try {
+        Connection cn = null;
+        PreparedStatement pstm = null;
+        cn = DBConnect.getConnection();
+        sql ="SELECT * FROM san_pham_chi_tiet WHERE san_pham_chi_tiet.ma LIKE ?  ORDER BY san_pham_chi_tiet.id DESC";
+        pstm = cn.prepareStatement(sql);
+        pstm.setString(1, "%" + ma + "%");
+        //pstm.setString(2, "%" + ma + "%");
+        ResultSet result = pstm.executeQuery();
+        while (result.next()) {
+                sp.add(new SanPhamCT(result.getInt(1), result.getInt(2), result.getInt(3), 
+                        result.getInt(4), result.getInt(5), result.getInt(6), result.getInt(7), result.getInt(8),
+                        result.getInt(9),result.getInt(10),result.getInt(22),result.getString(11),result.getBoolean(12),
+                        result.getInt(13),result.getFloat(14),result.getString(15),result.getInt(16),result.getString(19),
+                        result.getString(20),result.getBoolean(21),result.getString(23)
+                ));
+            }
+        } catch (Exception e) {
+            System.out.println("Lôi truy " + sql);
+        }
+        return sp;
+    }
+    
+    
+    
 }

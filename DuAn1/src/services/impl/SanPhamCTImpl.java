@@ -85,6 +85,11 @@ public class SanPhamCTImpl implements SanPhamCTService{
         return sanPhamCTRepo.getallWithMaSPCT(MaSPCT);
     }
 
+    @Override
+    public List<SanPhamCT> SearchSPCT(String MaSPCT) {
+         return sanPhamCTRepo.search(MaSPCT);
+    }
+
     
     
 }

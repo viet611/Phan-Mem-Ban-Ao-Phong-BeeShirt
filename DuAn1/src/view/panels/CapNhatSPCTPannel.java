@@ -427,7 +427,8 @@ public class CapNhatSPCTPannel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel18.setText("Cập Nhật");
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setText("Cập Nhật Chi Tiết Sản Phẩm");
 
         jLabel19.setText("Mã SPCT");
 
@@ -501,6 +502,7 @@ public class CapNhatSPCTPannel extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/Save.png"))); // NOI18N
         jButton2.setText("Cập nhật");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,6 +510,7 @@ public class CapNhatSPCTPannel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/Exit button.png"))); // NOI18N
         jButton3.setText("Hủy");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -515,7 +518,7 @@ public class CapNhatSPCTPannel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Clear");
+        jButton4.setText("Làm Mới");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -665,28 +668,28 @@ public class CapNhatSPCTPannel extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(txt_MaSPCT.getText()==""||txt_gia.getText()==""||txt_soLuong.getText()==""){
-            MsgBox.alert(this, "Nhập Đủ Thông Tin Yêu Cầu!");
+        if (txt_MaSPCT.getText() == "" || txt_gia.getText() == "" || txt_soLuong.getText() == "") {
+            MsgBox.warring(this, "Nhập Đủ Thông Tin Yêu Cầu!");
             return;
         }
         String soLuong = txt_soLuong.getText();
         if (!isNumeric(soLuong)) {
-            MsgBox.alert(this, "Dữ Liệu Nhập Vào Phải Là Số!");
+            MsgBox.warring(this, "Dữ Liệu Nhập Vào Phải Là Số!");
             txt_soLuong.setText(""); // Xóa nội dung không hợp lệ
             return;
-        }else{
+        } else {
             int so_Luong = Integer.parseInt(soLuong);
-            if(0>so_Luong || so_Luong >99){
-            MsgBox.alert(this, "Số Lượng Lớn Hơn Không Và Nhỏ Hơn 99!");
-            txt_soLuong.setText("");
-            return;
-        }
+            if (0 > so_Luong || so_Luong > 99) {
+                MsgBox.warring(this, "Số Lượng Lớn Hơn 0 Và Nhỏ Hơn 99!");
+                txt_soLuong.setText("99");
+                return;
+            }
         }
         
         if (MsgBox.confirm(this, "Bạn có muốn Sửa không?")) {
@@ -694,6 +697,7 @@ public class CapNhatSPCTPannel extends javax.swing.JPanel {
                 SanPhamCT sp = getUpdateData();
                 spctService.UpdateSPCT(sp);
                 updateDialogForm.LoadSPCT(1);
+                updateDialogForm.LoadDataSP();
                 MsgBox.alert(this, "Sửa Thành Công!");
                 //dispose();
             } catch (Exception e) {

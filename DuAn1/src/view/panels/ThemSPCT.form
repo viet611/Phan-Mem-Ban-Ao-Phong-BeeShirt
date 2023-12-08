@@ -164,10 +164,8 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane1" min="-2" pref="111" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="lblAnhADD" min="-2" pref="153" max="-2" attributes="0"/>
@@ -418,7 +416,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/view/icon/sanpham.png"/>
+          <Image iconType="3" name="/com/raven/icon/Save.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Th&#xea;m SP"/>
       </Properties>
@@ -429,7 +427,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/view/icon/thoat.png"/>
+          <Image iconType="3" name="/com/raven/icon/Exit button.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Hu&#x1ef7;"/>
       </Properties>
@@ -442,7 +440,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/view/icon/phieugiamgia.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Clear Form"/>
+        <Property name="text" type="java.lang.String" value="L&#xe0;m M&#x1edb;i"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>

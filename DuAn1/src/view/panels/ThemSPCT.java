@@ -67,6 +67,16 @@ public class ThemSPCT extends javax.swing.JPanel {
     }
 
     public void LoadCombobox(){
+        cbo_TenSP.removeAllItems();
+        cbo_ChatLieu.removeAllItems();
+        cbo_HoaTiet.removeAllItems();
+        cbo_KichThuoc.removeAllItems();
+        cbo_KieuDang.removeAllItems();
+        cbo_MDSD.removeAllItems();
+        cbo_MPH.removeAllItems();
+        cbo_MauSac.removeAllItems();
+        cbo_ThuongHieu.removeAllItems();
+        
         List<SanPham> sanPham = spService.getName();
         List<ThuongHieu> thuongHieu = thService.getName();
         List<MauSac> mauSac = msService.getName();
@@ -250,6 +260,17 @@ public class ThemSPCT extends javax.swing.JPanel {
         
         return spct;
     }
+     private static boolean isNumeric(String str) {
+        try {
+            double d = Double.parseDouble(str);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+     public void getLoad(){
+         createDialogForm.LoadDataToRDOKichThuoc();
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -353,7 +374,7 @@ public class ThemSPCT extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon/sanpham.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/Save.png"))); // NOI18N
         jButton1.setText("Thêm SP");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,7 +382,7 @@ public class ThemSPCT extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon/thoat.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/Exit button.png"))); // NOI18N
         jButton2.setText("Huỷ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -370,7 +391,7 @@ public class ThemSPCT extends javax.swing.JPanel {
         });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon/phieugiamgia.png"))); // NOI18N
-        jButton4.setText("Clear Form");
+        jButton4.setText("Làm Mới");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -520,9 +541,8 @@ public class ThemSPCT extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel15)
-                                        .addComponent(jButton3))))
+                                    .addComponent(jLabel15)
+                                    .addComponent(jButton3)))
                             .addComponent(lblAnhADD, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -545,6 +565,23 @@ public class ThemSPCT extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(txt_Gia.getText().equalsIgnoreCase("")||txt_SoLuong.getText().equalsIgnoreCase("")){
+            MsgBox.warring(this, "Vui Lòng Nhập Đủ Thông Tin!");
+            return;
+        }
+        String soLuong = txt_SoLuong.getText();
+        if (!isNumeric(soLuong)) {
+            MsgBox.warring(this, "Dữ Liệu Nhập Vào Phải Là Số!");
+            txt_SoLuong.setText(""); // Xóa nội dung không hợp lệ
+            return;
+        } else {
+            int so_Luong = Integer.parseInt(soLuong);
+            if (0 > so_Luong || so_Luong > 99) {
+                MsgBox.warring(this, "Số Lượng Lớn Hơn 0 Và Nhỏ Hơn 99!");
+                txt_SoLuong.setText("99");
+                return;
+            }
+        }
         
         
         if (MsgBox.confirm(this, "Bạn có muốn thêm sản phẩm không?")) {
@@ -553,6 +590,8 @@ public class ThemSPCT extends javax.swing.JPanel {
                 spctService.InsertSPCT(sp);
                 MsgBox.alert(this, "Thêm Thành Công!");
                 createDialogForm.LoadSPCT(1);
+                createDialogForm.LoadDataSP();
+                createDialogForm.LoadDataToRDOKichThuoc();
                 //dispose();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -571,6 +610,8 @@ public class ThemSPCT extends javax.swing.JPanel {
         this.setVisible(false);
         createDialogForm.LoadCBOFilter();
         createDialogForm.LoadSPCT(1);
+        createDialogForm.LoadDataToRDOKichThuoc();
+        createDialogForm.LoadDataSP();
         createDialogForm.addTabPannel();
         
     }//GEN-LAST:event_jButton2ActionPerformed

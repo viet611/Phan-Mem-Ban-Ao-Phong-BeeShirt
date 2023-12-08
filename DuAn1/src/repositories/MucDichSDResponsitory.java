@@ -181,7 +181,7 @@ public class MucDichSDResponsitory {
         Connection cn = null;
         PreparedStatement pstm = null;
         cn = DBConnect.getConnection();
-        sql ="SELECT * FROM mua_phu_hop WHERE mua_phu_hop.ma LIKE ? OR mua_phu_hop.ten LIKE ? ORDER BY muc_dich_su_dung.id DESC";
+        sql ="SELECT * FROM muc_dich_su_dung WHERE muc_dich_su_dung.ma LIKE ? OR muc_dich_su_dung.ten LIKE ? ORDER BY muc_dich_su_dung.id DESC";
         pstm = cn.prepareStatement(sql);
         pstm.setString(1, "%" + ma + "%");
         pstm.setString(2, "%" + ma + "%");
