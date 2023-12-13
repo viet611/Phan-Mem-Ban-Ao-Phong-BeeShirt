@@ -189,6 +189,7 @@ SanPhamImpl spService = new SanPhamImpl();
         txt_HoaTiet = new javax.swing.JTextField();
         txt_MPH = new javax.swing.JTextField();
         txt_chatLieu = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -212,8 +213,6 @@ SanPhamImpl spService = new SanPhamImpl();
 
         jLabel10.setText("Số Lượng");
 
-        txt_Gia.setEnabled(false);
-
         jLabel12.setText("hình Ảnh");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -232,20 +231,9 @@ SanPhamImpl spService = new SanPhamImpl();
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel14.setText("Thông Tin Chi Tiết");
 
-        txt_mauSac.setEnabled(false);
-
-        txt_kieuDang.setEnabled(false);
-
-        txt_kichThuoc.setEnabled(false);
-
-        txt_thuongHieu.setEnabled(false);
-
-        txt_HoaTiet.setEnabled(false);
-
         txt_MPH.setToolTipText("");
-        txt_MPH.setEnabled(false);
 
-        txt_chatLieu.setEnabled(false);
+        jLabel1.setText("Tên Sản Phẩm: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,7 +244,6 @@ SanPhamImpl spService = new SanPhamImpl();
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_TenSp, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,6 +257,10 @@ SanPhamImpl spService = new SanPhamImpl();
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbl_TenSp, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(235, 235, 235)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txt_kieuDang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
@@ -281,7 +272,7 @@ SanPhamImpl spService = new SanPhamImpl();
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(2, 2, 2)
                                         .addComponent(lbl_QRCode, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(45, 45, 45)
+                                .addGap(120, 120, 120)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel7)
@@ -292,9 +283,9 @@ SanPhamImpl spService = new SanPhamImpl();
                                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel12)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
+                        .addGap(255, 255, 255)
                         .addComponent(jLabel14)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +293,9 @@ SanPhamImpl spService = new SanPhamImpl();
                 .addGap(11, 11, 11)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_TenSp)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_TenSp)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -391,6 +384,7 @@ SanPhamImpl spService = new SanPhamImpl();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;

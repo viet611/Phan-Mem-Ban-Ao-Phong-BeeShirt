@@ -203,7 +203,7 @@
                   <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="82" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -211,7 +211,10 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel18">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t Chi Ti&#x1ebf;t S&#x1ea3;n Ph&#x1ea9;m"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">
@@ -472,6 +475,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/raven/icon/Save.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
       </Properties>
       <Events>
@@ -480,6 +486,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/raven/icon/Exit button.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
       </Properties>
       <Events>
@@ -488,7 +497,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Clear"/>
+        <Property name="text" type="java.lang.String" value="L&#xe0;m M&#x1edb;i"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>

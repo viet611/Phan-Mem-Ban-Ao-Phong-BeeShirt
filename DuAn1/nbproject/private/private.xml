@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/repositories/ThongKeRpository.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/services/ThongKeService.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/services/impl/ThongKeImpl.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/view/panels/DoanhThuPanel.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/view/panels/SanPhamPanel.java</file>
+            <file>file:/C:/Users/Admin/Desktop/DAN1/DuAn1/src/view/panels/ChiTietSanPhamCT.java</file>
         </group>
     </open-files>
 </project-private>

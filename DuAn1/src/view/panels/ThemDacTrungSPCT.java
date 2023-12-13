@@ -254,6 +254,12 @@ public class ThemDacTrungSPCT extends javax.swing.JDialog {
             LoadDataSP();
         }
     }
+    @Override
+    public void dispose(){
+        createDialogForm.LoadCombobox();
+        createDialogForm.getLoad();
+        super.dispose();
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -804,7 +810,7 @@ public class ThemDacTrungSPCT extends javax.swing.JDialog {
                 
             }
         }
-        createDialogForm.LoadCombobox();
+        //createDialogForm.LoadCombobox();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
