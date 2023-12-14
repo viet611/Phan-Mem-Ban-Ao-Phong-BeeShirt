@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/com/raven/application/form/LoginForm.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/com/raven/application/Application.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/ChiTietSanPhamCT.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/services/KhuyenMaiService.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/repositories/NhanVienRepository.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/VoucherPanel.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/BanHangPanel.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/services/impl/KhuyenMaiServiceIMPL.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/repositories/KhuyenMaiRepository.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Phan%20Mem%20Ban%20Ao%20Phong%20BeeShirt/DuAn1/src/view/panels/SanPhamPanel.java</file>
         </group>
     </open-files>
 </project-private>

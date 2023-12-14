@@ -1020,15 +1020,18 @@ public class BanHangPanel extends javax.swing.JPanel implements Runnable, Thread
 
     }//GEN-LAST:event_btnTTThanhCongActionPerformed
 
+    int idHD = 18;
+    
     private void btnHoaDonMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonMoiActionPerformed
         txtSDT.setText("");
         txtHoTen.setText("");
         txtDiaChi.setText("");
         txtTimKH.setText("");
-        hd = new HoaDon(null, null, null, nhanVien, "HD", null, null, null, null, null, null, 0, null, null, nhanVien.getMa(), nhanVien.getMa(), Boolean.FALSE);
+        hd = new HoaDon(null, null, null, nhanVien, "HD"+idHD, null, null, null, null, null, null, 0, null, null, nhanVien.getMa(), nhanVien.getMa(), Boolean.FALSE);
         hdService.insert(hd);
         listHDCho = hdService.getAll().stream().filter(c -> c.getTrangThai() == 0).collect(Collectors.toList());
         loadTableHDCho();
+        idHD++;
         MsgBox.alert(this, "Tạo thành công");
     }//GEN-LAST:event_btnHoaDonMoiActionPerformed
 
